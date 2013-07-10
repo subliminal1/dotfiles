@@ -2,6 +2,7 @@
 
 find ~/.dotfiles/ -maxdepth 1 -name '*' \
     ! -path ~/.dotfiles/ \
+    ! -path ~/.dotfiles/README.md \
     ! -path ~/.dotfiles/.*.swp \
     ! -path ~/.dotfiles/.git \
     ! -path ~/.dotfiles/.gitmodules \
