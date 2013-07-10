@@ -1,0 +1,12 @@
+[user]
+    name = Matthew Myers
+    email = mmyers@welf.net
+[color]
+    auto = true
+    ui = true
+[push]
+	default = matching
+[core]
+	editor = vim
+[config]
+	editor = vim
