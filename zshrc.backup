@@ -1,0 +1,58 @@
+ZSH="$HOME/.dotfiles/zsh"
+
+# Lines configured by zsh-newuser-install
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/mmyers/.zshrc'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+autoload -Uz promptinit
+promptinit
+#prompt redhat
+
+
+source "$ZSH/themes/terminalparty.zsh-theme"
+
+setopt correct
+
+alias ls='ls -F --color=auto'
+
+export LC_ALL=en_US.utf8
+
+precmd () {
+    print -Pn "\033]0;%n@%M: %~\a"
+}
+
+
+# History
+export HISTSIZE=2000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+
+bindkey '\e[A'  up-line-or-history
+bindkey '\e[B'  down-line-or-history
+bindkey '\e[C'  forward-char
+bindkey '\e[D'  backward-char
+bindkey '\eOA'  up-line-or-history
+bindkey '\eOB'  down-line-or-history
+bindkey '\eOC'  forward-char
+bindkey '\eOD'  backward-char
+
+function fc() {
+
+    if [[ $1 == '-s' ]]; then
+        builtin fc -e - $2;
+        return;
+    fi
+
+    builtin fc $*;
+}
+
+fc -R
+
