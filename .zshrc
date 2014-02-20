@@ -46,13 +46,13 @@ ZSH=$HOME/.dotfiles/zsh
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git sudo theme composer)
+plugins=(git gitfast sudo theme composer)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -70,12 +70,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 setopt promptsubst
 
-if [[ $EUID -eq 0 ]] then
-    PROMPT='%{$fg[green]%} # '
-else
-    PROMPT='%{$fg[green]%} %% '
-fi
-
+PROMPT='%{$fg[red]%}%# '
 RPROMPT='%{$fg[white]%}%2~ $(git_prompt_info)%{$fg_bold[blue]%}%m%{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}("
