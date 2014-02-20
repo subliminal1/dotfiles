@@ -5,7 +5,8 @@ ZSH=$HOME/.dotfiles/zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="terminalparty"
+# ZSH_THEME=""
+
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -68,3 +69,16 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 setopt promptsubst
+
+if [[ $EUID -eq 0 ]] then
+    PROMPT='%{$fg[green]%} # '
+else
+    PROMPT='%{$fg[green]%} %% '
+fi
+
+RPROMPT='%{$fg[white]%}%2~ $(git_prompt_info)%{$fg_bold[blue]%}%m%{$reset_color%}'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}("
+ZSH_THEME_GIT_PROMPT_SUFFIX=") %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}%{$fg[yellow]%}"
