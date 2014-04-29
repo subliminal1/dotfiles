@@ -43,6 +43,8 @@ ZSH=$HOME/.dotfiles/zsh
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
 
+
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -52,7 +54,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.dotfiles/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -69,11 +71,14 @@ export PATH=$HOME/.local/bin:$PATH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 setopt promptsubst
+setopt hist_ignore_all_dups
 
 PROMPT='%{$fg[red]%}%# '
-RPROMPT='%{$fg[white]%}%2~ $(git_prompt_info)%{$fg_bold[blue]%}%m%{$reset_color%}'
+RPROMPT='%{$fg[white]%}%2~ $(git_prompt_info)%{$fg_bold[blue]%}%m%{$reset_color%}%'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}("
 ZSH_THEME_GIT_PROMPT_SUFFIX=") %{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}%{$fg[yellow]%}"
+
+export ZLE_RPROMPT_INDENT=-0
