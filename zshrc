@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.dotfiles/zsh
+#ZSH=$HOME/.dotfiles/zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -50,7 +50,7 @@ ZSH=$HOME/.dotfiles/zsh
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git gitfast sudo theme composer)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 

@@ -6,6 +6,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/SirVer/ultisnips'
 Plug 'https://github.com/itchyny/lightline.vim'
 Plug 'https://github.com/neomake/neomake'
+Plug 'https://github.com/pangloss/vim-javascript'
+Plug 'https://github.com/StanAngeloff/php.vim'
+Plug 'https://github.com/jwalton512/vim-blade'
+Plug 'https://github.com/junegunn/vim-easy-align'
 "Plug 'https://github.com/vim-syntastic/syntastic'
 call plug#end()
 
@@ -14,8 +18,8 @@ filetype plugin indent on
 set t_Co=256
 syntax enable
 set background=dark
-"let g:gruvbox_contrast_dark = 'soft'
-colors onehalfdark
+let g:gruvbox_contrast_dark = 'hard'
+colors gruvbox
 
 set number ruler
 set autoindent smartindent copyindent
@@ -55,3 +59,5 @@ call neomake#configure#automake('rw', 1000)
 call neomake#configure#automake('nrwi', 500)
 
 nnoremap <leader>e :lfirst<CR>
+
+xmap <c-a> :EasyAlign=<CR>

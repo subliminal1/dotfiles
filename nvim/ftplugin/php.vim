@@ -4,4 +4,4 @@ let php_sql_query = 1      "Syntax highlight SQL code inside PHP strings.
 let php_noShortTags = 1    "Disable PHP short tags.
 
 setlocal hlsearch incsearch
-setlocal foldmethod=syntax foldenable foldlevel=1
+setlocal foldmethod=syntax foldenable foldlevel=0
