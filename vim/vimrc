@@ -2,19 +2,22 @@ set nocompatible
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'https://github.com/StanAngeloff/php.vim'
-Plug 'https://github.com/pangloss/vim-javascript'
-Plug 'https://github.com/leafgarland/typescript-vim'
-Plug 'https://github.com/morhetz/gruvbox'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'https://github.com/StanAngeloff/php.vim'
+    Plug 'https://github.com/pangloss/vim-javascript'
+    Plug 'https://github.com/leafgarland/typescript-vim'
+    Plug 'https://github.com/morhetz/gruvbox'
 
     if v:version >= 800
         Plug 'Shougo/deoplete.nvim'
         let g:deoplete#enable_at_startup = 1    " Enable deoplete
     endif
+
+    Plug 'https://github.com/scrooloose/nerdtree'
+    let NERDTreeQuitOnOpen=1   
 call plug#end()
 
 
@@ -46,5 +49,5 @@ set lazyredraw                                  " @TODO
 let mapleader = ','                             " Map , to Leader
 nnoremap <leader>f :Files<CR>                   " Map :Files 
 nnoremap <leader>b :Buffers<CR>                 " Map :Buffers
+nnoremap <leader>e :NERDTreeToggle<CR>          " Map :NERDTreeToggle
 vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>         " Sort Selection
-
