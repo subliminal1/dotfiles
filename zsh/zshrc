@@ -1,0 +1,5 @@
+source $HOME/.dotfiles/zsh/grml-zsh-config.sh
+source $HOME/.dotfiles/zsh/custom-functions.sh
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
