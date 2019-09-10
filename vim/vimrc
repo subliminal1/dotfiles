@@ -4,19 +4,18 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
-if v:version >= 8
-    Plug 'Shougo/deoplete.nvim'
-endif
-
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'https://github.com/StanAngeloff/php.vim'
 Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/morhetz/gruvbox'
+
+    if v:version >= 800
+        Plug 'Shougo/deoplete.nvim'
+        let g:deoplete#enable_at_startup = 1    " Enable deoplete
+    endif
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1            " Enable deoplete
 
 
 filetype plugin on
