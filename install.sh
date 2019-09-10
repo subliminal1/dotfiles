@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 if [ ! $(command -v zsh) ]; then
     echo "zsh is not installed, skipping.";
 else 
@@ -22,3 +21,6 @@ else
         install_zsh_config
     fi
 fi
+
+ln -s "$PWD/vim/config" "$HOME/.vim"
+ln -s "$PWD/vim/vimrc" "$HOME/.vimrc"

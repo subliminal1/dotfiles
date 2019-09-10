@@ -1,0 +1,46 @@
+set nocompatible
+
+" Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'https://github.com/StanAngeloff/php.vim'
+Plug 'https://github.com/pangloss/vim-javascript'
+Plug 'https://github.com/morhetz/gruvbox'
+call plug#end()
+
+let g:deoplete#enable_at_startup = 1            " Enable deoplete
+
+
+filetype plugin on
+syntax on
+set background=dark
+colorscheme gruvbox			                    " Set the colorscheme.
+
+set autoindent				                    " Indent new lines to the correct level.
+set backspace=start,indent,eol  	            " Backspace over start of insert, autoindent, and line breaks.
+set clipboard=unnamedplus		                " Use system clipboard.
+set copyindent				                    " Copy the structure of the existing lines indent when autoindenting a new line.
+set cursorline				                    " Highlight the screen line of the cursor with CursorLine.
+set encoding=utf8			                    " Internal character encoding.
+set expandtab				                    " Insert spaces instead of Tabs.
+set ignorecase				                    " Searches are case insensitive.
+set laststatus=2			                    " Always show the status line.
+set noswapfile				                    " Disable swap files.
+set nowrap				                        " Do not wrap lines.
+set number				                        " Show line numbers.
+set ruler				                        " Show column numbers.
+set shiftwidth=4			                    " @TODO
+set t_Co=256				                    " Set terminal colours.
+set tabstop=4				                    " Number of spaces a <Tab> character represents.
+set lazyredraw                                  " @TODO
+
+" Keybindings
+let mapleader = ','                             " Map , to Leader
+nnoremap <leader>f :Files<CR>                   " Map :Files 
+nnoremap <leader>b :Buffers<CR>                 " Map :Buffers
+vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>         " Sort Selection
+
