@@ -4,7 +4,11 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/deoplete.nvim'
+
+if v:version >= 8
+    Plug 'Shougo/deoplete.nvim'
+endif
+
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'https://github.com/StanAngeloff/php.vim'
