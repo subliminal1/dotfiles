@@ -11,13 +11,23 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/leafgarland/typescript-vim'
     Plug 'https://github.com/morhetz/gruvbox'
 
+    Plug 'https://github.com/vim-syntastic/syntastic'
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+
+    Plug 'https://github.com/scrooloose/nerdtree'
+    let NERDTreeQuitOnOpen=1   
+
     if v:version >= 800
         Plug 'Shougo/deoplete.nvim'
         let g:deoplete#enable_at_startup = 1    " Enable deoplete
     endif
 
-    Plug 'https://github.com/scrooloose/nerdtree'
-    let NERDTreeQuitOnOpen=1   
 call plug#end()
 
 
@@ -51,3 +61,5 @@ nnoremap <leader>f :Files<CR>                   " Map :Files
 nnoremap <leader>b :Buffers<CR>                 " Map :Buffers
 nnoremap <leader>e :NERDTreeToggle<CR>          " Map :NERDTreeToggle
 vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>         " Sort Selection
+
+
