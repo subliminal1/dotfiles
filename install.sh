@@ -1,8 +1,10 @@
 #!/bin/sh
 
-cwd=$(pwd)
+if [ -w "$HOME/.zshrc" ]; then
+    printf '%s' 'Overwrite existing zshrc? (y/n) '
+    read ANSWER
 
-ln -s "$cwd/zshrc" ~/.zshrc
-mkdir -p ~/.config/
-ln -s "$cwd/nvim" ~/.config/nvim
-ln -s "$cwd/gitconfig" ~/.gitconfig
+    case $ANSWER in
+        [yY]) rm "$HOME/.zshrc" && ln -s "$PWD/zshrc" "$HOME/.zshrc" ;;
+    esac
+fi
