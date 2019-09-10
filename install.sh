@@ -8,7 +8,7 @@ else
         ln -s "$PWD/zsh/zshrc" "$HOME/.zshrc"
     }
 
-    if [ -w "$HOME/.zshrc" ]; then
+    if [ -L "$HOME/.zshrc" ]; then
         printf '%s' 'Overwrite existing zshrc? (y/n) '
         read ANSWER
         case $ANSWER in
