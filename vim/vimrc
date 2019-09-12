@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/StanAngeloff/php.vim'
     Plug 'https://github.com/pangloss/vim-javascript'
     Plug 'https://github.com/leafgarland/typescript-vim'
+    Plug 'https://github.com/itchyny/lightline.vim'
     Plug 'https://github.com/morhetz/gruvbox'
 
     Plug 'https://github.com/vim-syntastic/syntastic'
