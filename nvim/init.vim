@@ -10,16 +10,21 @@ Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/StanAngeloff/php.vim'
 Plug 'https://github.com/jwalton512/vim-blade'
 Plug 'https://github.com/junegunn/vim-easy-align'
-"Plug 'https://github.com/vim-syntastic/syntastic'
+Plug 'https://github.com/vim-syntastic/syntastic'
+Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 call plug#end()
 
 filetype plugin indent on
 
 set t_Co=256
+set termguicolors
 syntax enable
 set background=dark
-let g:gruvbox_contrast_dark = 'hard'
-colors gruvbox
+set clipboard=unnamedplus
+
+"let g:gruvbox_contrast_dark = 'hard'
+"colors gruvbox
+colorscheme dracula
 
 set number ruler
 set autoindent smartindent copyindent
