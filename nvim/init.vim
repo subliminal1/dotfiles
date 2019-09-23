@@ -49,9 +49,14 @@ set ruler				                        " Show column numbers.
 set shiftwidth=4			                    " @TODO
 set tabstop=4				                    " Number of spaces a <Tab> character represents.
 set lazyredraw                                  " @TODO
+set listchars+=eol:$,space:.
+set list
+
 
 let mapleader = ','
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
 vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>
+
