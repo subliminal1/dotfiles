@@ -14,6 +14,9 @@ call plug#begin('~/.config/nvim/plugged')
         let g:deoplete#enable_at_startup = 1
     endif
 
+    " Linting
+    Plug 'neomake/neomake'
+
     " Language
     Plug 'https://github.com/StanAngeloff/php.vim'
     Plug 'https://github.com/pangloss/vim-javascript'
@@ -49,7 +52,7 @@ set ruler				                        " Show column numbers.
 set shiftwidth=4			                    " @TODO
 set tabstop=4				                    " Number of spaces a <Tab> character represents.
 set lazyredraw                                  " @TODO
-set listchars+=eol:$,space:.
+set listchars+=eol:$
 set list
 
 
