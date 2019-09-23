@@ -54,6 +54,7 @@ set tabstop=4				                    " Number of spaces a <Tab> character repres
 set lazyredraw                                  " @TODO
 set listchars+=eol:$
 set nolist
+set noswapfile                                  " Disable file backups.
 
 
 let mapleader = ','
@@ -70,8 +71,8 @@ function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
   call setbufvar(buf, '&signcolumn', 'no')
 
-  let height = &lines - 4
-  let width = float2nr(&columns - (&columns * 2 / 10))
+  let height = &lines - 5
+  let width = float2nr(&columns - (&columns * 2 / 5))
   let col = float2nr((&columns - width) / 2)
 
 
