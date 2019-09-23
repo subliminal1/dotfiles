@@ -22,5 +22,8 @@ else
     fi
 fi
 
+# TODO add checks/removal prompts
 ln -s "$PWD/vim/config" "$HOME/.vim"
 ln -s "$PWD/vim/vimrc" "$HOME/.vimrc"
+ln -s $PWD/nvim "$HOME/.config"
+

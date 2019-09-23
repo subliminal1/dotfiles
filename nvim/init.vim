@@ -1,68 +1,48 @@
-call plug#begin('~/.config/nvim/plugged')
-Plug 'https://github.com/morhetz/gruvbox'
-Plug 'https://github.com/Shougo/deoplete.nvim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/SirVer/ultisnips'
-Plug 'https://github.com/itchyny/lightline.vim'
-Plug 'https://github.com/neomake/neomake'
-Plug 'https://github.com/pangloss/vim-javascript'
-Plug 'https://github.com/StanAngeloff/php.vim'
-Plug 'https://github.com/jwalton512/vim-blade'
-Plug 'https://github.com/junegunn/vim-easy-align'
-Plug 'https://github.com/vim-syntastic/syntastic'
-Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+set nocompatible
+
+call plug#begin('./plugged')
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+
+    Plug 'scrooloose/syntastic'
+    Plug 'https://github.com/StanAngeloff/php.vim'
+
+    Plug 'https://github.com/scrooloose/nerdtree'
+    let NERDTreeQuitOnOpen=1   
+
+    Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+    Plug 'vim-airline/vim-airline'
+
 call plug#end()
 
-filetype plugin indent on
-
-set t_Co=256
-set termguicolors
-syntax enable
-set background=dark
-set clipboard=unnamedplus
-
-"let g:gruvbox_contrast_dark = 'hard'
-"colors gruvbox
+syntax on
+filetype plugin on
 colorscheme dracula
 
-set number ruler
-set autoindent smartindent copyindent
-set tabstop=4 shiftwidth=4 smarttab expandtab
+set t_Co=256				                    " Set terminal colors.
+set termguicolors			    		        " Force better colors.
+set clipboard=unnamedplus
 
-set laststatus=2
-set showcmd
-set cursorline
-set ignorecase
-set colorcolumn=80
+set background=dark
+set autoindent				                    " Indent new lines to the correct level.
+set backspace=start,indent,eol  	            " Backspace over start of insert, autoindent, and line breaks.
+set clipboard=unnamedplus		                " Use system clipboard.
+set copyindent				                    " Copy the structure of the existing lines indent when autoindenting a new line.
+set cursorline				                    " Highlight the screen line of the cursor with CursorLine.
+set encoding=utf8			                    " Internal character encoding.
+set expandtab				                    " Insert spaces instead of Tabs.
+set ignorecase				                    " Searches are case insensitive.
+set laststatus=2			                    " Always show the status line.
+set noswapfile				                    " Disable swap files.
+set nowrap				                        " Do not wrap lines.
+set number				                        " Show line numbers.
+set ruler				                        " Show column numbers.
+set shiftwidth=4			                    " @TODO
+set tabstop=4				                    " Number of spaces a <Tab> character represents.
+set lazyredraw                                  " @TODO
 
-set lazyredraw
-
-" keybindings
 let mapleader = ','
-map <leader>f :Files<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
-
-
-" UltiSnips
-let g:UltiSnipsSnippetsDir = '~/.config/nvim/UltiSnips'
-let g:snips_author = 'Matthew Myers <mmyers@welf.net>'
-let g:deoplete#enable_at_startup = 1
-
-inoremap <Tab> <c-r>=UltiSnips#ExpandSnippet()<cr>
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
-
-" When writing a buffer (no delay).
-call neomake#configure#automake('w')
-" When writing a buffer (no delay), and on normal mode changes (after 750ms).
-call neomake#configure#automake('nw', 750)
-" When reading a buffer (after 1s), and when writing (no delay).
-call neomake#configure#automake('rw', 1000)
-" Full config: when writing or reading a buffer, and on changes in insert and
-" normal mode (after 1s; no delay when writing).
-call neomake#configure#automake('nrwi', 500)
-
-nnoremap <leader>e :lfirst<CR>
-
-xmap <c-a> :EasyAlign=<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
+vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>
