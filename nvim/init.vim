@@ -53,7 +53,7 @@ set shiftwidth=4			                    " @TODO
 set tabstop=4				                    " Number of spaces a <Tab> character represents.
 set lazyredraw                                  " @TODO
 set listchars+=eol:$
-set list
+set nolist
 
 
 let mapleader = ','
@@ -63,3 +63,4 @@ nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
 vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>
 
+call neomake#configure#automake('nrwi', 500)
