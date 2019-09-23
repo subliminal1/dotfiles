@@ -53,7 +53,7 @@ set shiftwidth=4			                    " @TODO
 set tabstop=4				                    " Number of spaces a <Tab> character represents.
 set lazyredraw                                  " @TODO
 set listchars+=eol:$
-set list
+set nolist
 
 
 let mapleader = ','
@@ -88,3 +88,5 @@ endfunction
 
 
 highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#93a1a1 guibg=#002931
+=======
+call neomake#configure#automake('nrwi', 500)
