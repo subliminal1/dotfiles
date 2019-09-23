@@ -1,26 +1,22 @@
 set nocompatible
 
-call plug#begin('./plugged')
+call plug#begin('~/.config/nvim/plugged')
+
+    " Finder
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-
-    Plug 'scrooloose/syntastic'
-    Plug 'https://github.com/StanAngeloff/php.vim'
-
-    if has('nvim')
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    else
-        Plug 'Shougo/deoplete.nvim'
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
-    endif
-
-    let g:deoplete#enable_at_startup = 1
-
-
     Plug 'https://github.com/scrooloose/nerdtree'
     let NERDTreeQuitOnOpen=1   
 
+    " Completion
+    Plug 'https://github.com/Shougo/deoplete.nvim'
+    let g:deoplete#enable_at_startup = 1
+
+    " Language
+    Plug 'https://github.com/StanAngeloff/php.vim'
+    Plug 'https://github.com/pangloss/vim-javascript'
+
+    " Interface
     Plug 'https://github.com/rafi/awesome-vim-colorschemes'
     Plug 'vim-airline/vim-airline'
 
