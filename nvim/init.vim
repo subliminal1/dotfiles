@@ -1,7 +1,7 @@
 set nocompatible
 
 if filereadable(expand("~/.dotfiles/nvim/local.vim"))
-    source expand("~/.dotfiles/nvim/local.vim")
+    source ~/.dotfiles/nvim/local.vim
 endif
 
 
@@ -63,8 +63,9 @@ set nolist
 set noswapfile                                  " Disable file backups.
 
 
-let mapleader = "\<Space>"
+let mapleader = ","
 nnoremap <leader>f :Files<CR>
+nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
