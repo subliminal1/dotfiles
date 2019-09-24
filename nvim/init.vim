@@ -1,5 +1,7 @@
 set nocompatible
 
+let g:python3_host_prog = expand('~/.pyenv/versions/3.6.1/bin/python3')
+
 call plug#begin('~/.config/nvim/plugged')
 
     " Finder
@@ -57,7 +59,7 @@ set nolist
 set noswapfile                                  " Disable file backups.
 
 
-let mapleader = ','
+let mapleader = "\<Space>"
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Files %:h<CR>
