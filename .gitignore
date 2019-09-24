@@ -1,3 +1,4 @@
 vim/config/plugged/**
 nvim/plugged/**
 bin/vm
+nvim/local.vim

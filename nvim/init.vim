@@ -1,6 +1,9 @@
 set nocompatible
 
-let g:python3_host_prog = expand('~/.pyenv/versions/3.6.1/bin/python3')
+if filereadable(expand("~/.dotfiles/nvim/local.vim"))
+    source expand("~/.dotfiles/nvim/local.vim")
+endif
+
 
 call plug#begin('~/.config/nvim/plugged')
 
