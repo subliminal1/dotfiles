@@ -39,6 +39,7 @@ set clipboard=unnamedplus
 
 set background=dark
 set autoindent				                    " Indent new lines to the correct level.
+set smartindent
 set backspace=start,indent,eol  	            " Backspace over start of insert, autoindent, and line breaks.
 set clipboard=unnamedplus		                " Use system clipboard.
 set copyindent				                    " Copy the structure of the existing lines indent when autoindenting a new line.
