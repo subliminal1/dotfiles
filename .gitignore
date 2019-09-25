@@ -3,3 +3,4 @@ nvim/plugged/**
 bin/vm
 nvim/local.vim
 zsh/local.sh
+tags

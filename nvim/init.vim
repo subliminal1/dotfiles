@@ -30,14 +30,21 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/pangloss/vim-javascript'
 
     " Interface
-    Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-    Plug 'vim-airline/vim-airline'
+    Plug 'https://github.com/itchyny/lightline.vim'
+    let g:lightline = { 'colorscheme': 'jellybeans' }
+
+    " Color Schemes
+    Plug 'https://github.com/drewtempelmeyer/palenight.vim'
+    Plug 'https://github.com/morhetz/gruvbox'
+    Plug 'https://github.com/arcticicestudio/nord-vim'
+    Plug 'https://github.com/joshdick/onedark.vim'
 
 call plug#end()
 
 syntax on
 filetype plugin on
-colorscheme dracula
+colorscheme gruvbox
+let g:gruvbox_contrast_dark='hard'
 
 set t_Co=256				                    " Set terminal colors.
 set termguicolors			    		        " Force better colors.
