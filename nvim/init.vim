@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
     " Finder
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -17,13 +19,14 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/ludovicchabant/vim-gutentags'
 
     " Completion
-    if has('python3')
-        Plug 'https://github.com/Shougo/deoplete.nvim'
-        let g:deoplete#enable_at_startup = 1
-    endif
+    "if has('python3')
+    "    Plug 'https://github.com/Shougo/deoplete.nvim'
+    "    let g:deoplete#enable_at_startup = 1
+    "endif
 
     " Linting
-    Plug 'neomake/neomake'
+    " Plug 'neomake/neomake'
+    "call neomake#configure#automake('nrwi', 500)
 
     " Language
     Plug 'https://github.com/StanAngeloff/php.vim'
@@ -105,4 +108,3 @@ function! FloatingFZF()
 endfunction
 
 highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#93a1a1 guibg=#002931
-call neomake#configure#automake('nrwi', 500)
