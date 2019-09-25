@@ -49,6 +49,7 @@ set laststatus=2			                    " Always show the status line.
 set noswapfile				                    " Disable swap files.
 set nowrap				                        " Do not wrap lines.
 set number				                        " Show line numbers.
+set colorcolumn=80
 set ruler				                        " Show column numbers.
 set shiftwidth=4			                    " @TODO
 set tabstop=4				                    " Number of spaces a <Tab> character represents.
@@ -62,3 +63,5 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
 vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>
+
+highlight ColorColumn guibg=#384048
