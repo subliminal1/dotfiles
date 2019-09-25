@@ -13,6 +13,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/scrooloose/nerdtree'
     let NERDTreeQuitOnOpen=1   
 
+    " Tags
+    Plug 'https://github.com/ludovicchabant/vim-gutentags'
+
     " Completion
     if has('python3')
         Plug 'https://github.com/Shougo/deoplete.nvim'
