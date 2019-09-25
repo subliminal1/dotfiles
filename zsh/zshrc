@@ -7,3 +7,4 @@ export FZF_DEFAULT_COMMAND="find $CWD -type f | grep -v node_modules | grep -v .
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
