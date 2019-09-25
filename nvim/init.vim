@@ -71,8 +71,8 @@ nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
 vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>
 
-let $FZF_DEFAULT_OPTS='--layout=reverse'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+"let $FZF_DEFAULT_OPTS='--layout=reverse'
+"let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
