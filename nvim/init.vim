@@ -41,13 +41,13 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/morhetz/gruvbox'
     Plug 'https://github.com/arcticicestudio/nord-vim'
     Plug 'https://github.com/joshdick/onedark.vim'
+    Plug 'https://github.com/nanotech/jellybeans.vim'
 
 call plug#end()
 
 syntax on
 filetype plugin on
-colorscheme gruvbox
-let g:gruvbox_contrast_dark='hard'
+colorscheme jellybeans
 
 set t_Co=256				                    " Set terminal colors.
 set termguicolors			    		        " Force better colors.
