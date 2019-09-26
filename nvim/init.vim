@@ -3,6 +3,9 @@ set nocompatible
 " Plugins
 call plug#begin('~/.config/nvim/plugged')
 
+    " Completion
+    Plug 'lifepillar/vim-mucomplete'
+
     " Finder
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -27,6 +30,12 @@ call plug#end()
 " Plugin Configuration
 let NERDTreeQuitOnOpen=1   
 let g:lightline = { 'colorscheme': 'jellybeans' }
+
+" Completion
+set completeopt=menuone,noselect
+let g:mucomplete#enable_auto_at_startup = 1
+imap <c-j> <plug>(MUcompleteFwd)
+imap <c-k> <plug>(MUcompleteBwd)
 
 syntax on
 filetype plugin on
