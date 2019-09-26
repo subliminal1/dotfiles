@@ -64,4 +64,6 @@ nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
 vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>
 
+map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
+
 highlight ColorColumn guibg=#384048
