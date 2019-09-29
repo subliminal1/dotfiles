@@ -3,6 +3,12 @@ set nocompatible
 " Plugins
 call plug#begin('~/.config/nvim/plugged')
 
+    " Completion
+     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+    " Tags
+    Plug 'ludovicchabant/vim-gutentags'
+
     " Finder
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -10,6 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     " Language
     Plug 'https://github.com/StanAngeloff/php.vim'
+    Plug 'https://github.com/shawncplus/phpcomplete.vim'
     Plug 'https://github.com/pangloss/vim-javascript'
 
     " Interface
@@ -27,6 +34,28 @@ call plug#end()
 " Plugin Configuration
 let NERDTreeQuitOnOpen=1   
 let g:lightline = { 'colorscheme': 'jellybeans' }
+
+let g:gutentags_cache_dir = '~/.cache/ctags'
+let g:gutentags_ctags_extra_args = [
+    \ '--totals=yes',
+    \ '--tag-relative=yes',
+    \ '--fields=+ailmnS',
+    \ '--languages=php',
+    \ '--PHP-kinds=cdfint',
+    \ '--extras=+q',
+\ ]
+    
+
+let g:gutentags_ctags_exclude = [
+    \ 'node_modules',
+    \ 'vendor',
+    \ '.git'
+\ ]
+
+let g:deoplete#enable_at_startup = 1
+let g:auto_complete_delay = 100
+
+set completeopt=menuone,noinsert,noselect
 
 syntax on
 filetype plugin on
@@ -65,5 +94,3 @@ nnoremap <leader>e :NERDTreeToggle<CR>
 vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>
 
 map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
-
-highlight ColorColumn guibg=#384048
