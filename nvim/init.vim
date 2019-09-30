@@ -1,5 +1,5 @@
 " Plugins {{{
-call plug#begin('~/.cache/vim/plugged')
+call plug#begin('~/.cache/vim/plugins')
 
 " Finders
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
