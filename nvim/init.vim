@@ -32,7 +32,7 @@ call plug#end()
 " Plugin Configuration {{{
 let NERDTreeQuitOnOpen=1 
 let g:lightline = { 'colorscheme': 'ayu_mirage' }
-let g:gutentags_cache_dir = '~/.cache/ctags'
+let g:gutentags_cache_dir = '~/.cache/vim/ctags'
 let g:gutentags_ctags_extra_args = [
     \ '--totals=yes',
     \ '--tag-relative=yes',
