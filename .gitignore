@@ -1,6 +1,3 @@
-vim/config/plugged/**
-nvim/plugged/**
 bin/vm
 nvim/local.vim
 zsh/local.sh
-tags

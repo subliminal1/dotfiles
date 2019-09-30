@@ -1,40 +1,37 @@
-set nocompatible
+" Plugins {{{
+call plug#begin('~/.cache/vim/plugged')
 
-" Plugins
-call plug#begin('~/.config/nvim/plugged')
+" Finders
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'https://github.com/scrooloose/nerdtree'
 
-    " Completion
-     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Completion
+if has('node')
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 
-    " Tags
-    Plug 'ludovicchabant/vim-gutentags'
+" Tags
+Plug 'ludovicchabant/vim-gutentags'
 
-    " Finder
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
-    Plug 'https://github.com/scrooloose/nerdtree'
+" Linting
+Plug 'neomake/neomake'
 
-    " Language
-    Plug 'https://github.com/StanAngeloff/php.vim'
-    Plug 'https://github.com/shawncplus/phpcomplete.vim'
-    Plug 'https://github.com/pangloss/vim-javascript'
+" Syntax
+Plug 'https://github.com/StanAngeloff/php.vim'
+Plug 'https://github.com/shawncplus/phpcomplete.vim'
+Plug 'https://github.com/pangloss/vim-javascript'
 
-    " Interface
-    Plug 'https://github.com/itchyny/lightline.vim'
-
-    " Color Schemes
-    Plug 'https://github.com/drewtempelmeyer/palenight.vim'
-    Plug 'https://github.com/morhetz/gruvbox'
-    Plug 'https://github.com/arcticicestudio/nord-vim'
-    Plug 'https://github.com/joshdick/onedark.vim'
-    Plug 'https://github.com/nanotech/jellybeans.vim'
+" Interface
+Plug 'itchyny/lightline.vim'
+Plug 'ayu-theme/ayu-vim'
 
 call plug#end()
+" }}}
 
-" Plugin Configuration
-let NERDTreeQuitOnOpen=1   
-let g:lightline = { 'colorscheme': 'jellybeans' }
-
+" Plugin Configuration {{{
+let NERDTreeQuitOnOpen=1 
+let g:lightline = { 'colorscheme': 'ayu_mirage' }
 let g:gutentags_cache_dir = '~/.cache/ctags'
 let g:gutentags_ctags_extra_args = [
     \ '--totals=yes',
@@ -44,53 +41,78 @@ let g:gutentags_ctags_extra_args = [
     \ '--PHP-kinds=cdfint',
     \ '--extras=+q',
 \ ]
-    
-
 let g:gutentags_ctags_exclude = [
     \ 'node_modules',
     \ 'vendor',
     \ '.git'
 \ ]
 
-let g:deoplete#enable_at_startup = 1
-let g:auto_complete_delay = 100
+call neomake#configure#automake('w')
+" }}}
 
-set completeopt=menuone,noinsert,noselect
 
+filetype indent plugin on
 syntax on
-filetype plugin on
-colorscheme jellybeans
 
-set t_Co=256				                    " Set terminal colors.
-set termguicolors			    		        " Force better colors.
+" Theming
+set termguicolors
+let ayucolor="dark"
+colorscheme ayu
+
+" System
+set encoding=utf-8
 set clipboard=unnamedplus
-set background=dark
-set autoindent				                    " Indent new lines to the correct level.
+set backspace=indent,eol,start
+set hidden
+set noswapfile
+set noshowcmd
+
+" Tabs
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set shiftround
+
+" Text
+set textwidth=80
+set nowrap
+
+" Indentation 
+set autoindent                 				
 set smartindent
-set backspace=start,indent,eol  	            " Backspace over start of insert, autoindent, and line breaks.
-set clipboard=unnamedplus		                " Use system clipboard.
-set copyindent				                    " Copy the structure of the existing lines indent when autoindenting a new line.
-set cursorline				                    " Highlight the screen line of the cursor with CursorLine.
-set encoding=utf8			                    " Internal character encoding.
-set expandtab				                    " Insert spaces instead of Tabs.
-set ignorecase				                    " Searches are case insensitive.
-set laststatus=2			                    " Always show the status line.
-set noswapfile				                    " Disable swap files.
-set nowrap				                        " Do not wrap lines.
-set number				                        " Show line numbers.
+set copyindent
+
+" Interface
+set number
+set noruler
+set wildmenu                   				
+set laststatus=2
 set colorcolumn=80
-set ruler				                        " Show column numbers.
-set shiftwidth=4			                    " @TODO
-set tabstop=4				                    " Number of spaces a <Tab> character represents.
-set lazyredraw                                  " @TODO
-set noswapfile                                  " Disable file backups.
+set cursorline
 
+" Search
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
 
-let mapleader = ","
+" Keybindings 
+let g:mapleader = ","
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Files %:h<CR>
+nnoremap <leader>t :BTags<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
 vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>
-
 map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
+
+" Functions
+fu! FzfTagsCurrWord()
+  let currWord = expand('<cword>')
+  if len(currWord) > 0
+    call fzf#vim#tags({'options': '-q ' . currWord})
+  else
+    execute ':Tags'
+  endif
+endfu
