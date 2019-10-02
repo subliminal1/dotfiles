@@ -1,9 +1,9 @@
 source $HOME/.dotfiles/zsh/grml-zsh-config.sh
 source $HOME/.dotfiles/zsh/custom-functions.sh
 export PATH=$HOME/.dotfiles/bin:$PATH
-export FZF_DEFAULT_COMMAND="find $CWD -type f | grep -v node_modules | grep -v .git | grep -v vendor | sort"
+export FZF_DEFAULT_COMMAND="find $CWD -type f | grep -v .log | grep -v node_modules | grep -v .git | grep -v vendor | sort"
 
-[ -f ~/.dotfiles/zsh/local.sh ] && source ~/.dotfiles/zsh/local.sh
+[ -f ~/.zsh-local.sh ] && source ~/.zsh-local.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
