@@ -30,17 +30,20 @@ call plug#end()
 " }}}
 
 " Plugin Configuration {{{
+"
 let NERDTreeQuitOnOpen=1 
+let g:php_sql_query = 1
 let g:lightline = { 'colorscheme': 'ayu_mirage' }
 let g:gutentags_cache_dir = '~/.cache/vim/ctags'
+
 let g:gutentags_ctags_extra_args = [
     \ '--totals=yes',
-    \ '--tag-relative=yes',
-    \ '--fields=+ailmnS',
-    \ '--languages=php',
+    \ '--languages=PHP',
+    \ '--fields=+aimlS',
     \ '--PHP-kinds=cdfint',
-    \ '--extras=+q',
+    \ '--output-format=e-ctags',
 \ ]
+
 let g:gutentags_ctags_exclude = [
     \ 'node_modules',
     \ 'vendor',
