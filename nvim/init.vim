@@ -13,6 +13,7 @@ endif
 
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'https://github.com/majutsushi/tagbar'
 
 " Linting
 Plug 'neomake/neomake'
@@ -107,7 +108,9 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>t :BTags<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <leader>r :TagbarOpen fjc<CR>
 vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>
+
 map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
 
 " Functions
