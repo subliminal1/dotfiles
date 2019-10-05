@@ -3,8 +3,7 @@ source $HOME/.dotfiles/zsh/custom-functions.sh
 export PATH=$HOME/.dotfiles/bin:$PATH
 export FZF_DEFAULT_COMMAND="find $CWD -type f | grep -v .log | grep -v node_modules | grep -v .git | grep -v vendor | sort"
 
-[ -f ~/.zsh-local.sh ] && source ~/.zsh-local.sh
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+[ -f ~/.zsh-local.sh ] && source ~/.zsh-local.sh
 

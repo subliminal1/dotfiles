@@ -109,7 +109,7 @@ nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>t :BTags<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <leader>r :TagbarOpen fjc<CR>
-vnoremap <leader>g :'<,'>s/\n/\r\r/<CR>
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
 map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
 
