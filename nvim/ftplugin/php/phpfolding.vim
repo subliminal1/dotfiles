@@ -664,13 +664,3 @@ endif
 let &cpo = s:save_cpo
 unlet s:save_cpo
 " vim:ft=vim:foldmethod=marker:nowrap:tabstop=4:shiftwidth=4
-
-
-
-function! s:UpdatePHPFolds()
-    if &filetype == "php"
-        call s:EnableFastPHPFolds()
-    endif
-endfun
-
-autocmd BufWritePost * call s:UpdatePHPFolds()
