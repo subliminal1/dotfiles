@@ -25,3 +25,4 @@ fi
 # TODO add checks/removal prompts
 ln -s $PWD/nvim ~/.vim
 ln -s $PWD/nvim/init.vim ~/.vimrc
+ln -s $PWD/tmux.conf ~/.tmux.conf
