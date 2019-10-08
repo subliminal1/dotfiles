@@ -10,7 +10,6 @@ Plug 'https://github.com/scrooloose/nerdtree'
 if has('node')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
-Plug 'https://github.com/jiangmiao/auto-pairs'
 
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
