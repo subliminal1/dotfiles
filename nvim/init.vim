@@ -115,3 +115,4 @@ nnoremap <leader>t :TagbarOpen fjc<CR>
 nnoremap <Leader>ag :Ag <C-R><C-W><CR>
 nnoremap <leader>g :call gitblame#echo()<CR>
 map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
+map <F5> :EnableFastPHPFolds<CR>
