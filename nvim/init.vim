@@ -17,15 +17,19 @@ Plug 'https://github.com/majutsushi/tagbar'
 " Linting
 Plug 'neomake/neomake'
 
-" Syntax
+" GIT
+Plug 'https://github.com/zivyangll/git-blame.vim'
+
+" PHP
 Plug 'https://github.com/StanAngeloff/php.vim'
 Plug 'https://github.com/shawncplus/phpcomplete.vim'
+
+" JavaScript
 Plug 'https://github.com/pangloss/vim-javascript'
 
 " Interface
 Plug 'itchyny/lightline.vim'
 Plug 'ayu-theme/ayu-vim'
-Plug 'https://github.com/morhetz/gruvbox'
 
 call plug#end()
 " }}}
@@ -92,7 +96,7 @@ set number
 set noruler
 set wildmenu                   				
 set laststatus=2
-set colorcolumn=80
+set colorcolumn=80,120
 set cursorline
 
 " Search
@@ -106,19 +110,8 @@ let g:mapleader = ","
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Files %:h<CR>
-nnoremap <leader>t :BTags<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>r :TagbarOpen fjc<CR>
-nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
-
+nnoremap <leader>t :TagbarOpen fjc<CR>
+nnoremap <Leader>ag :Ag <C-R><C-W><CR>
+nnoremap <leader>g :call gitblame#echo()<CR>
 map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
-
-" Functions
-fu! FzfTagsCurrWord()
-  let currWord = expand('<cword>')
-  if len(currWord) > 0
-    call fzf#vim#tags({'options': '-q ' . currWord})
-  else
-    execute ':Tags'
-  endif
-endfu
