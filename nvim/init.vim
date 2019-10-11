@@ -12,7 +12,6 @@ if has('node')
 endif
 
 " Tags
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'https://github.com/majutsushi/tagbar'
 
 " Linting
