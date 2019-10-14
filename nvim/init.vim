@@ -30,7 +30,7 @@ Plug 'https://github.com/pangloss/vim-javascript'
 " Interface
 Plug 'itchyny/lightline.vim'
 Plug 'ayu-theme/ayu-vim'
-Plug 'drewtempelmeyer/palenight.vim'
+Plug 'https://github.com/joshdick/onedark.vim'
 
 
 call plug#end()
@@ -40,22 +40,7 @@ call plug#end()
 "
 let NERDTreeQuitOnOpen=1 
 let g:php_sql_query = 1
-let g:lightline = { 'colorscheme': 'ayu_mirage' }
-let g:gutentags_cache_dir = '~/.cache/vim/ctags'
-
-let g:gutentags_ctags_extra_args = [
-    \ '--totals=yes',
-    \ '--languages=PHP',
-    \ '--fields=+aimlS',
-    \ '--PHP-kinds=cdfint',
-    \ '--output-format=e-ctags',
-\ ]
-
-let g:gutentags_ctags_exclude = [
-    \ 'node_modules',
-    \ 'vendor',
-    \ '.git'
-\ ]
+let g:lightline = { 'colorscheme': 'onedark' }
 
 call neomake#configure#automake('w')
 " }}}
@@ -67,7 +52,7 @@ syntax on
 " Theming
 set termguicolors
 let ayucolor="dark"
-colorscheme ayu
+colorscheme onedark
 
 " System
 set encoding=utf-8
