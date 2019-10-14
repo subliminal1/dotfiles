@@ -29,7 +29,8 @@ Plug 'https://github.com/pangloss/vim-javascript'
 
 " Interface
 Plug 'itchyny/lightline.vim'
-Plug 'ayu-theme/ayu-vim'
+Plug 'daviesjamie/vim-base16-lightline'
+Plug 'chriskempson/base16-vim'
 
 
 call plug#end()
@@ -45,11 +46,10 @@ call neomake#configure#automake('w')
 filetype indent plugin on
 syntax on
 
-" Themw
+" Theme
 set termguicolors
-let ayucolor="mirage"
-let g:lightline = { 'colorscheme': 'ayu' }
-colorscheme ayu
+let g:lightline = { 'colorscheme': 'base16' }
+colorscheme base16-tomorrow-night-eighties
 
 " System
 set encoding=utf-8
