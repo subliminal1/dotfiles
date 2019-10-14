@@ -30,7 +30,8 @@ Plug 'https://github.com/pangloss/vim-javascript'
 " Interface
 Plug 'itchyny/lightline.vim'
 Plug 'ayu-theme/ayu-vim'
-Plug 'https://github.com/cocopon/iceberg.vim/'
+Plug 'drewtempelmeyer/palenight.vim'
+
 
 call plug#end()
 " }}}
