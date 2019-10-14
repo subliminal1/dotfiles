@@ -27,6 +27,9 @@ Plug 'https://github.com/shawncplus/phpcomplete.vim'
 " JavaScript
 Plug 'https://github.com/pangloss/vim-javascript'
 
+" Markdown
+Plug 'https://github.com/masukomi/vim-markdown-folding'
+
 " Interface
 Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
@@ -97,7 +100,11 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <leader>t :TagbarOpen fjc<CR>
-nnoremap <Leader>ag :Ag <C-R><C-W><CR>
+nnoremap <leader>ag :Ag <C-R><C-W><CR>
 nnoremap <leader>g :call gitblame#echo()<CR>
-map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
+nnoremap <C-Space> :call checkbox#ToggleCB()<cr>
+
 map <F5> :EnableFastPHPFolds<CR>
+map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
+
+
