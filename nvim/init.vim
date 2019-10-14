@@ -30,18 +30,14 @@ Plug 'https://github.com/pangloss/vim-javascript'
 " Interface
 Plug 'itchyny/lightline.vim'
 Plug 'ayu-theme/ayu-vim'
-Plug 'https://github.com/joshdick/onedark.vim'
 
 
 call plug#end()
 " }}}
 
 " Plugin Configuration {{{
-"
 let NERDTreeQuitOnOpen=1 
 let g:php_sql_query = 1
-let g:lightline = { 'colorscheme': 'onedark' }
-
 call neomake#configure#automake('w')
 " }}}
 
@@ -49,10 +45,11 @@ call neomake#configure#automake('w')
 filetype indent plugin on
 syntax on
 
-" Theming
+" Themw
 set termguicolors
-let ayucolor="dark"
-colorscheme onedark
+let ayucolor="mirage"
+let g:lightline = { 'colorscheme': 'ayu' }
+colorscheme ayu
 
 " System
 set encoding=utf-8
@@ -61,6 +58,7 @@ set backspace=indent,eol,start
 set hidden
 set noswapfile
 set noshowcmd
+set noshowmode
 
 " Tabs
 set tabstop=4
