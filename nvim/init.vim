@@ -1,6 +1,9 @@
 " Plugins {{{
 call plug#begin('~/.cache/vim/plugins')
 
+" System
+Plug 'https://github.com/godlygeek/tabular'
+
 " Finders
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -27,9 +30,6 @@ Plug 'https://github.com/shawncplus/phpcomplete.vim'
 " JavaScript
 Plug 'https://github.com/pangloss/vim-javascript'
 
-" Markdown
-Plug 'https://github.com/masukomi/vim-markdown-folding'
-
 " Interface
 Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
@@ -40,9 +40,9 @@ call plug#end()
 " }}}
 
 " Plugin Configuration {{{
+call neomake#configure#automake('w')
 let NERDTreeQuitOnOpen=1 
 let g:php_sql_query = 1
-call neomake#configure#automake('w')
 " }}}
 
 
@@ -52,7 +52,7 @@ syntax on
 " Theme
 set termguicolors
 let g:lightline = { 'colorscheme': 'base16' }
-colorscheme base16-tomorrow-night-eighties
+colorscheme base16-eighties
 
 " System
 set encoding=utf-8
@@ -104,7 +104,9 @@ nnoremap <leader>ag :Ag <C-R><C-W><CR>
 nnoremap <leader>g :call gitblame#echo()<CR>
 nnoremap <C-Space> :call checkbox#ToggleCB()<cr>
 
+vnoremap <leader>s :'<,'>sort<CR>
+vnoremap <leader>st :Tab /\s\+\zs\s/l1c0<CR>
+vnoremap <leader>a :Tab /
+
 map <F5> :EnableFastPHPFolds<CR>
 map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
-
-
