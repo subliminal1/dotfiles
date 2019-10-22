@@ -30,6 +30,9 @@ Plug 'https://github.com/shawncplus/phpcomplete.vim'
 " JavaScript
 Plug 'https://github.com/pangloss/vim-javascript'
 
+Plug 'https://github.com/sheerun/vim-polyglot'
+Plug 'https://github.com/plasticboy/vim-markdown'
+
 " Interface
 Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
@@ -43,6 +46,9 @@ call plug#end()
 call neomake#configure#automake('w')
 let NERDTreeQuitOnOpen=1 
 let g:php_sql_query = 1
+let g:polyglot_disabled = ['md', 'markdown']
+let g:markdown_fenced_languages = ['html', 'css', 'scss', 'sql', 'javascript', 'php']
+let g:vim_markdown_folding_disabled = 1
 " }}}
 
 
