@@ -44,7 +44,7 @@ call plug#end()
 
 " Plugin Configuration {{{
 call neomake#configure#automake('w')
-let NERDTreeQuitOnOpen=1 
+let NERDTreeQuitOnOpen=1
 let g:php_sql_query = 1
 let g:polyglot_disabled = ['md', 'markdown']
 let g:markdown_fenced_languages = ['html', 'css', 'scss', 'sql', 'javascript', 'php']
@@ -80,18 +80,19 @@ set shiftround
 set textwidth=80
 set nowrap
 
-" Indentation 
-set autoindent                 				
+" Indentation
+set autoindent
 set smartindent
 set copyindent
 
 " Interface
 set number
 set noruler
-set wildmenu                   				
+set wildmenu
 set laststatus=2
 set colorcolumn=80,120
 set cursorline
+set list
 
 " Search
 set ignorecase
@@ -99,7 +100,7 @@ set smartcase
 set incsearch
 set hlsearch
 
-" Keybindings 
+" Keybindings
 let g:mapleader = ","
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
@@ -116,3 +117,13 @@ vnoremap <leader>a :Tab /
 
 map <F5> :EnableFastPHPFolds<CR>
 map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
+
+
+function! <SID>StripTrailingWhitespaces()
+    let c = getpos(".")
+    %s/\s\+$//e
+    call setpos(".", c)
+endfun
+
+" strip white spaces
+autocmd BufWritePre *.vim,*.php,*.javascript :call <SID>StripTrailingWhitespaces()
