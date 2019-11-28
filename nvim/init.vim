@@ -26,6 +26,7 @@ Plug 'https://github.com/zivyangll/git-blame.vim'
 " PHP
 Plug 'https://github.com/StanAngeloff/php.vim'
 Plug 'https://github.com/shawncplus/phpcomplete.vim'
+Plug 'https://github.com/stephpy/vim-php-cs-fixer'
 
 " JavaScript
 Plug 'https://github.com/pangloss/vim-javascript'
@@ -49,11 +50,14 @@ let g:php_sql_query = 1
 let g:polyglot_disabled = ['md', 'markdown']
 let g:markdown_fenced_languages = ['html', 'css', 'scss', 'sql', 'javascript', 'php']
 let g:vim_markdown_folding_disabled = 1
+let g:php_cs_fixer_path = "~/.dotfiles/bin/phpcs"
 " }}}
 
 
 filetype indent plugin on
 syntax on
+
+
 
 " Theme
 set termguicolors
@@ -86,7 +90,8 @@ set smartindent
 set copyindent
 
 " Interface
-set number
+"set number
+set relativenumber
 set noruler
 set wildmenu
 set laststatus=2
@@ -112,8 +117,7 @@ nnoremap <leader>g :call gitblame#echo()<CR>
 nnoremap <C-Space> :call checkbox#ToggleCB()<cr>
 
 vnoremap <leader>s :'<,'>sort<CR>
-vnoremap <leader>st :Tab /\s\+\zs\s/l1c0<CR>
-vnoremap <leader>a :Tab /
+vnoremap <leader>a :Tabularize /
 
 map <F5> :EnableFastPHPFolds<CR>
 map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
@@ -126,4 +130,19 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 
 " strip white spaces
-autocmd BufWritePre *.vim,*.php,*.javascript :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.sql,*.vim,*.php,*.javascript :call <SID>StripTrailingWhitespaces()
+
+
+
+set updatetime=300
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
