@@ -3,11 +3,11 @@ call plug#begin('~/.cache/vim/plugins')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
 Plug 'https://github.com/neomake/neomake'
-
 Plug 'https://github.com/stanangeloff/php.vim'
-
+Plug 'https://github.com/pangloss/vim-javascript'
+Plug 'https://github.com/majutsushi/tagbar'
+Plug 'https://github.com/godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
 Plug 'chriskempson/base16-vim'
@@ -15,8 +15,9 @@ Plug 'chriskempson/base16-vim'
 call plug#end()
 " }}}
 
+" Plugin Options {{{
 call neomake#configure#automake('nrwi', 250)
-
+"}}}
 
 
 filetype indent plugin on
@@ -75,23 +76,10 @@ let g:mapleader = ","
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Files %:h<CR>
-nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <leader>t :TagbarOpen fjc<CR>
 nnoremap <leader>ag :Ag <C-R><C-W><CR>
-nnoremap <leader>g :call gitblame#echo()<CR>
-nnoremap <C-Space> :call checkbox#ToggleCB()<cr>
-
 vnoremap <leader>s :'<,'>sort<CR>
 vnoremap <leader>a :Tabularize /
 
-map <F5> :EnableFastPHPFolds<CR>
-map <F12> :e ~/.dotfiles/nvim/init.vim<CR>
-
-function! <SID>StripTrailingWhitespaces()
-    let c = getpos(".")
-    %s/\s\+$//e
-    call setpos(".", c)
-endfun
-
-" strip white spaces
-autocmd BufWritePre *.sql,*.vim,*.php,*.js,*.ts :call <SID>StripTrailingWhitespaces()
+" Strip whitespace on writing.
+autocmd BufWritePre * %s/\s\+$//e
