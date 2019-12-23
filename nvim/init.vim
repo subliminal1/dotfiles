@@ -6,7 +6,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'https://github.com/neomake/neomake'
 
-"Plug 'https://github.com/stanangeloff/php.vim'
+Plug 'https://github.com/stanangeloff/php.vim'
 
 Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
