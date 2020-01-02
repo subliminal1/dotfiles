@@ -26,7 +26,7 @@ syntax on
 " Theme
 set termguicolors
 let g:lightline = { 'colorscheme': 'base16' }
-colorscheme base16-eighties
+colorscheme base16-tomorrow-night-eighties
 
 " System
 set encoding=utf-8
