@@ -5,9 +5,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/neomake/neomake'
 Plug 'https://github.com/stanangeloff/php.vim'
+Plug 'https://github.com/2072/PHP-Indenting-for-VIm'
 Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/godlygeek/tabular'
+Plug 'https://github.com/masukomi/vim-markdown-folding'
 Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
 Plug 'chriskempson/base16-vim'
@@ -17,6 +19,8 @@ call plug#end()
 
 " Plugin Options {{{
 call neomake#configure#automake('nrwi', 250)
+let g:PHP_noArrowMatching = 1
+let g:PHP_vintage_case_default_indent = 1
 "}}}
 
 
@@ -83,3 +87,33 @@ vnoremap <leader>a :Tabularize /
 
 " Strip whitespace on writing.
 autocmd BufWritePre * %s/\s\+$//e
+
+autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
+
+function! CreateCenteredFloatingWindow()
+    let width = min([&columns - 4, max([80, &columns - 20])])
+    let height = min([&lines - 4, max([20, &lines - 10])])
+    let top = ((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+
+    let top = "╭" . repeat("─", width - 2) . "╮"
+    let mid = "│" . repeat(" ", width - 2) . "│"
+    let bot = "╰" . repeat("─", width - 2) . "╯"
+    let lines = [top] + repeat([mid], height - 2) + [bot]
+    let s:buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+    call nvim_open_win(s:buf, v:true, opts)
+    setlocal colorcolumn=""
+    set winhl=Normal:Floating
+    let opts.row += 1
+    let opts.height -= 2
+    let opts.col += 2
+    let opts.width -= 4
+    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    setlocal colorcolumn=""
+    au BufWipeout <buffer> exe 'bw '.s:buf
+endfunction
+
+let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+
