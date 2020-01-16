@@ -13,6 +13,7 @@ Plug 'https://github.com/masukomi/vim-markdown-folding'
 Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
 Plug 'chriskempson/base16-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 " }}}
