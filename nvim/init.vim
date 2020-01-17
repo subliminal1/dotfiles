@@ -3,7 +3,6 @@ call plug#begin('~/.cache/vim/plugins')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/neomake/neomake'
 Plug 'https://github.com/stanangeloff/php.vim'
 Plug 'https://github.com/2072/PHP-Indenting-for-VIm'
 Plug 'https://github.com/pangloss/vim-javascript'
@@ -18,22 +17,26 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 " }}}
 
-" Plugin Options {{{
-call neomake#configure#automake('nrwi', 250)
-let g:PHP_noArrowMatching = 1
-let g:PHP_vintage_case_default_indent = 1
-"}}}
-
-
 filetype indent plugin on
 syntax on
 
-" Theme
+" Theme {{{
 set termguicolors
-let g:lightline = { 'colorscheme': 'base16' }
 colorscheme base16-tomorrow-night-eighties
 
-" System
+let g:lightline = {
+      \ 'colorscheme': 'base16',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
+" }}}
+
 set encoding=utf-8
 set clipboard=unnamedplus
 set backspace=indent,eol,start
@@ -60,7 +63,6 @@ set smartindent
 set copyindent
 
 " Interface
-"set number
 set relativenumber
 set noruler
 set wildmenu
@@ -86,11 +88,65 @@ nnoremap <leader>ag :Ag <C-R><C-W><CR>
 vnoremap <leader>s :'<,'>sort<CR>
 vnoremap <leader>a :Tabularize /
 
+
 " Strip whitespace on writing.
 autocmd BufWritePre * %s/\s\+$//e
 
 autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
 
+" Coc Testing {{{
+
+" if hidden is not set, TextEdit might fail.
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300      " You will have bad experience for diagnostic messages when it's default 4000.
+set shortmess+=c        " don't give |ins-completion-menu| messages.
+set signcolumn=yes      " always show signcolumns
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Jump to next error.
+nmap <silent> <leader>e <Plug>(coc-diagnostic-prev)
+
+" Show all diagnostics
+nnoremap <silent> <leader>E  :<C-u>CocList diagnostics<cr>
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+" Show LSP errors in the status line.
+function! StatusDiagnostic() abort
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if empty(info) | return '' | endif
+    let msgs = []
+    if get(info, 'error', 0)
+        call add(msgs, 'E' . info['error'])
+    endif
+    if get(info, 'warning', 0)
+        call add(msgs, 'W' . info['warning'])
+    endif
+    return join(msgs, ' ') . ' ' . get(g:, 'coc_status', '')
+endfunction
+" }}}
+"
+" FZF {{{
+let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+"
 function! CreateCenteredFloatingWindow()
     let width = min([&columns - 4, max([80, &columns - 20])])
     let height = min([&lines - 4, max([20, &lines - 10])])
@@ -115,6 +171,4 @@ function! CreateCenteredFloatingWindow()
     setlocal colorcolumn=""
     au BufWipeout <buffer> exe 'bw '.s:buf
 endfunction
-
-let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
-
+" }}}
