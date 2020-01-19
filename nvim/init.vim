@@ -13,9 +13,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
 Plug 'chriskempson/base16-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'https://github.com/neomake/neomake'
 
 call plug#end()
 " }}}
+
+call neomake#configure#automake('nrwi', 500)
 
 filetype indent plugin on
 syntax on
@@ -102,7 +105,7 @@ set nobackup
 set nowritebackup
 set updatetime=300      " You will have bad experience for diagnostic messages when it's default 4000.
 set shortmess+=c        " don't give |ins-completion-menu| messages.
-set signcolumn=yes      " always show signcolumns
+"set signcolumn=yes      " always show signcolumns
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -172,3 +175,6 @@ function! CreateCenteredFloatingWindow()
     au BufWipeout <buffer> exe 'bw '.s:buf
 endfunction
 " }}}
+"
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
