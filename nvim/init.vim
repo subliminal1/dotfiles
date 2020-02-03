@@ -22,13 +22,13 @@ call neomake#configure#automake('nrwi', 500)
 
 filetype indent plugin on
 syntax on
-
+let &t_ut=''
 " Theme {{{
 set termguicolors
 colorscheme base16-tomorrow-night-eighties
 
 let g:lightline = {
-      \ 'colorscheme': 'base16',
+      \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
