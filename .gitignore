@@ -2,3 +2,4 @@ bin/vm
 nvim/local.vim
 zsh/local.sh
 nvim/coc-settings.json
+nvim/.netrwhist

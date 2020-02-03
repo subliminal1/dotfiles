@@ -14,11 +14,12 @@ Plug 'daviesjamie/vim-base16-lightline'
 Plug 'chriskempson/base16-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/neomake/neomake'
+Plug 'https://github.com/bluz71/vim-nightfly-guicolors'
 
 call plug#end()
 " }}}
 
-call neomake#configure#automake('nrwi', 500)
+call neomake#configure#automake('w')
 
 filetype indent plugin on
 syntax on
@@ -96,6 +97,8 @@ vnoremap <leader>a :Tabularize /
 autocmd BufWritePre * %s/\s\+$//e
 
 autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
+
+let g:tagbar_sort = 0
 
 " Coc Testing {{{
 
