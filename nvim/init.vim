@@ -12,6 +12,7 @@ Plug 'daviesjamie/vim-base16-lightline'
 Plug 'chriskempson/base16-vim'
 Plug 'https://github.com/neomake/neomake'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'https://github.com/tomasr/molokai'
 call plug#end()
 
 filetype indent plugin on
@@ -19,13 +20,15 @@ syntax on
 
 let &t_ut=''
 let g:tagbar_sort = 0
-let g:lightline = { 'colorscheme': 'jellybeans' }
+let g:lightline = { 'colorscheme': 'darcula' }
 let g:neomake_open_list = 2
 let base16colorspace=256
 call neomake#configure#automake('rw')
 
 
-colorscheme base16-tomorrow-night-eighties
+colorscheme molokai
+hi Folded guibg=#27292a
+hi Folded guifg=#AAAAAA
 set signcolumn=yes
 set completeopt-=preview
 set termguicolors
