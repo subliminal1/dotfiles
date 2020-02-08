@@ -29,6 +29,10 @@ call neomake#configure#automake('rw')
 colorscheme molokai
 hi Folded guibg=#27292a
 hi Folded guifg=#AAAAAA
+hi LineNr guibg=bg
+hi SignColumn guibg=bg
+hi VertSplit guibg=bg guifg=bg
+
 set signcolumn=yes
 set completeopt-=preview
 set termguicolors
