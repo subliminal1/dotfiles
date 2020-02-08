@@ -11,6 +11,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
 Plug 'chriskempson/base16-vim'
 Plug 'https://github.com/neomake/neomake'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 filetype indent plugin on
