@@ -20,7 +20,7 @@ syntax on
 
 let &t_ut=''
 let g:tagbar_sort = 0
-let g:lightline = { 'colorscheme': 'darcula' }
+let g:lightline = { 'colorscheme': 'molokai' }
 let g:neomake_open_list = 2
 let base16colorspace=256
 call neomake#configure#automake('rw')
@@ -31,7 +31,7 @@ hi Folded guibg=#27292a
 hi Folded guifg=#AAAAAA
 hi LineNr guibg=bg
 hi SignColumn guibg=bg
-hi VertSplit guibg=bg guifg=bg
+hi VertSplit guibg=bg guifg=#27292a
 
 set signcolumn=yes
 set completeopt-=preview
