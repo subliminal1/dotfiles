@@ -20,15 +20,14 @@ syntax on
 
 let &t_ut=''
 let g:tagbar_sort = 0
-let g:lightline = { 'colorscheme': 'molokai' }
+let g:lightline = { 'colorscheme': 'material' }
 let g:neomake_open_list = 2
 let base16colorspace=256
 call neomake#configure#automake('rw')
 
 
 colorscheme molokai
-hi Folded guibg=#27292a
-hi Folded guifg=#AAAAAA
+autocmd BufEnter * hi Folded guifg=#AAAAAA guibg=#27292a
 hi LineNr guibg=bg
 hi SignColumn guibg=bg
 hi VertSplit guibg=bg guifg=#27292a
