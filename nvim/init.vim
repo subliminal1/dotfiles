@@ -31,7 +31,6 @@ endif
 let &t_ut=''
 let g:tagbar_sort = 0
 let g:lightline = { 'colorscheme': 'base16' }
-let g:neomake_open_list = 2
 set t_Co=16
 
 
