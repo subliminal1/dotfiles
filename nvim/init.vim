@@ -10,8 +10,16 @@ Plug 'https://github.com/masukomi/vim-markdown-folding'
 Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'daviesjamie/vim-base16-lightline'
-Plug 'https://github.com/neomake/neomake'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+if has('python3')
+    Plug 'https://github.com/neomake/neomake'
+    call neomake#configure#automake('rw')
+endif
+
+if has('nvim')
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
+
 call plug#end()
 
 filetype indent plugin on
@@ -21,9 +29,7 @@ let &t_ut=''
 let g:tagbar_sort = 0
 let g:lightline = { 'colorscheme': 'base16' }
 let g:neomake_open_list = 2
-let base16colorspace=16
 set t_Co=16
-call neomake#configure#automake('rw')
 
 
 colorscheme base16-monokai
@@ -32,7 +38,10 @@ hi LineNr guibg=bg
 hi SignColumn guibg=bg
 hi VertSplit guibg=bg guifg=#27292a
 
-set signcolumn=yes
+if has('signcolumn')
+    set signcolumn=yes
+endif
+
 set completeopt-=preview
 set termguicolors
 set encoding=utf-8
