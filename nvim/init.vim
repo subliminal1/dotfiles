@@ -13,7 +13,6 @@ Plug 'daviesjamie/vim-base16-lightline'
 
 if has('python3')
     Plug 'https://github.com/neomake/neomake'
-    call neomake#configure#automake('rw')
 endif
 
 if has('nvim')
@@ -24,6 +23,10 @@ call plug#end()
 
 filetype indent plugin on
 syntax on
+
+if has('python3')
+    call neomake#configure#automake('rw')
+endif
 
 let &t_ut=''
 let g:tagbar_sort = 0
@@ -43,7 +46,6 @@ if has('signcolumn')
 endif
 
 set completeopt-=preview
-set termguicolors
 set encoding=utf-8
 set clipboard=unnamedplus
 set backspace=indent,eol,start
