@@ -41,6 +41,10 @@ hi LineNr guibg=bg
 hi SignColumn guibg=bg
 hi VertSplit guibg=bg guifg=#27292a
 
+if has('termguicolors')
+    set termguicolors
+endif
+
 if has('signcolumn')
     set signcolumn=yes
 endif
