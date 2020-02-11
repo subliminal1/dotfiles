@@ -8,11 +8,10 @@ Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/masukomi/vim-markdown-folding'
 Plug 'itchyny/lightline.vim'
-Plug 'daviesjamie/vim-base16-lightline'
 Plug 'chriskempson/base16-vim'
+Plug 'daviesjamie/vim-base16-lightline'
 Plug 'https://github.com/neomake/neomake'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'https://github.com/tomasr/molokai'
 call plug#end()
 
 filetype indent plugin on
@@ -20,13 +19,14 @@ syntax on
 
 let &t_ut=''
 let g:tagbar_sort = 0
-let g:lightline = { 'colorscheme': 'material' }
+let g:lightline = { 'colorscheme': 'base16' }
 let g:neomake_open_list = 2
-let base16colorspace=256
+let base16colorspace=16
+set t_Co=16
 call neomake#configure#automake('rw')
 
 
-colorscheme molokai
+colorscheme base16-monokai
 autocmd BufEnter * hi Folded guifg=#AAAAAA guibg=#27292a
 hi LineNr guibg=bg
 hi SignColumn guibg=bg
