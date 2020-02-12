@@ -28,24 +28,18 @@ if has('python3')
     call neomake#configure#automake('rw')
 endif
 
-let &t_ut=''
+
 let g:tagbar_sort = 0
 let g:lightline = { 'colorscheme': 'base16' }
 set t_Co=16
-
-
-colorscheme base16-monokai
-autocmd BufEnter * hi Folded guifg=#AAAAAA guibg=#27292a
-hi LineNr guibg=bg
-hi SignColumn guibg=bg
-hi VertSplit guibg=bg guifg=#27292a
+colorscheme sod
 
 if has('termguicolors')
     set termguicolors
 endif
 
 if has('signcolumn')
-    set signcolumn=yes
+    set signcolumn=1
 endif
 
 set completeopt-=preview
