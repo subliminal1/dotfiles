@@ -101,7 +101,7 @@ endif
 
 " Neovim terminal colours
 if has("nvim")
-  let g:terminal_color_0 =  "#282c34"
+  let g:terminal_color_0 =  "#2a2b2e"
   let g:terminal_color_1 =  "#e06c75"
   let g:terminal_color_2 =  "#98c379"
   let g:terminal_color_3 =  "#e5c07b"
@@ -125,7 +125,7 @@ if has("nvim")
   endif
 elseif has("terminal")
   let g:terminal_ansi_colors = [
-        \ "#282c34",
+        \ "#2a2b2e",
         \ "#e06c75",
         \ "#98c379",
         \ "#e5c07b",
@@ -148,7 +148,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
-let g:colors_name = "base16-onedark"
+let g:colors_name = "messages"
 
 " Highlighting function
 " Optional variables are attributes and guisp

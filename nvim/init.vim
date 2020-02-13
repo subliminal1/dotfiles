@@ -31,10 +31,18 @@ endif
 
 let g:tagbar_sort = 0
 let g:lightline = { 'colorscheme': 'base16' }
-set t_Co=16
+
+"if exists('$TMUX')
+    " Colors in tmux
+"    let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+"    let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+"endif
+
+"let &t_ut=''
+set t_Co=256
 colorscheme messages
 
-if has('termguicolors')
+if exists('+termguicolors')
     set termguicolors
 endif
 
