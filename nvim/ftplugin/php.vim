@@ -9,5 +9,6 @@ let g:neomake_phpstan_level=5
 setlocal foldlevel=1
 
 " Fix highlighting PHPDOC types.
-hi! link phpDocTags phpDefine
-hi! link phpDocParam phpType
+hi! link phpDocTags Conditional
+hi! link phpDocParam phpDefine
+hi! link phpDocIdentifier Character
