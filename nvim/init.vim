@@ -32,7 +32,7 @@ endif
 let g:tagbar_sort = 0
 let g:lightline = { 'colorscheme': 'base16' }
 set t_Co=16
-colorscheme sod
+colorscheme messages
 
 if has('termguicolors')
     set termguicolors
