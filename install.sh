@@ -1,28 +1,33 @@
 #!/bin/sh
 
-if [ ! $(command -v zsh) ]; then
-    echo "zsh is not installed, skipping.";
-else 
-    install_zsh_config() {
-        ln -s "$PWD/zsh/zshrc" "$HOME/.zshrc"
-    }
+IFS=""
+output=()
 
-    if [ -L "$HOME/.zshrc" ]; then
-        printf '%s' 'Overwrite existing zshrc? (y/n) '
+replace () {
+    if [ -e $1 ]; then
+        printf "$1 already exists, overwrite (y/n) "
         read ANSWER
-        case $ANSWER in
-            [yY]) 
-                echo "overwriting zshrc"
-                rm "$HOME/.zshrc" 
-                install_zsh_config
-                ;;
-        esac
-    else
-        install_zsh_config
-    fi
-fi
+        if [ $ANSWER = "n" ]; then
+            return 0;
+        fi
 
-# TODO add checks/removal prompts
-ln -s $PWD/nvim ~/.vim
-ln -s $PWD/nvim/init.vim ~/.vimrc
-ln -s $PWD/tmux.conf ~/.tmux.conf
+        if [ -d $1 ]; then
+            rm -r $1
+        else
+            rm $1
+        fi
+    fi
+
+    ln -s $2 $1
+    output+=("[$2] -> [$1]")
+}
+
+replace ~/.zshrc $PWD/zsh/zshrc
+replace ~/.vim $PWD/nvim
+replace ~/.vimrc $PWD/nvim/init.vim
+replace ~/.tmux.conf $PWD/tmux.conf
+replace ~/.config/fish/config.fish $PWD/fish/config.fish
+
+for i in ${output[@]}; do
+    printf '%s\n' "$i"
+done
