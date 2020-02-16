@@ -8,7 +8,7 @@ replace () {
         printf "$1 already exists, overwrite (y/n) "
         read ANSWER
         if [ $ANSWER = "n" ]; then
-            return 0;
+            return 0
         fi
 
         if [ -d $1 ]; then
@@ -16,6 +16,11 @@ replace () {
         else
             rm $1
         fi
+    fi
+
+    DEST=`dirname $1`
+    if [ ! -d $DEST ]; then
+        mkdir -p $DEST
     fi
 
     ln -s $2 $1
