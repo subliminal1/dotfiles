@@ -81,6 +81,9 @@ set ignorecase
 set smartcase
 set incsearch
 set nohlsearch
+set foldmethod=indent
+set foldlevelstart=0
+set foldnestmax=2
 
 let g:mapleader = ","
 nnoremap <leader>f :Files<CR>
