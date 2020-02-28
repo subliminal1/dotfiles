@@ -1,55 +1,47 @@
+" Plugins {{{
 call plug#begin('~/.cache/vim/plugins')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/stanangeloff/php.vim'
 Plug 'https://github.com/2072/PHP-Indenting-for-VIm'
 Plug 'https://github.com/pangloss/vim-javascript'
+Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/godlygeek/tabular'
-Plug 'https://github.com/masukomi/vim-markdown-folding'
 Plug 'itchyny/lightline.vim'
-Plug 'chriskempson/base16-vim'
-Plug 'daviesjamie/vim-base16-lightline'
-
-if has('python3')
-    Plug 'https://github.com/neomake/neomake'
-endif
 
 if has('nvim')
+    Plug 'https://github.com/neomake/neomake'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
-
 call plug#end()
-
-filetype indent plugin on
-syntax on
-
-if has('python3')
-    call neomake#configure#automake('rw')
-endif
-
-
+" }}}
+"
+" Plug Settings {{{
 let g:tagbar_sort = 0
-let g:lightline = { 'colorscheme': 'base16' }
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_override_foldtext = 0
+let g:vim_markdown_folding_level = 2
+let g:vim_markdown_no_default_key_mappings = 1
+let g:lightline = { 'colorscheme': 'Tomorrow_Night' }
+" }}}
 
-"if exists('$TMUX')
-    " Colors in tmux
-"    let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
-"    let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
-"endif
-
-"let &t_ut=''
-set t_Co=256
-colorscheme messages
+" Conditional Settings {{{
+if has('nvim')
+    call neomake#configure#automake('rw')
+    set signcolumn=yes:1
+endif
 
 if exists('+termguicolors')
     set termguicolors
 endif
+" }}}
 
-if has('signcolumn')
-    set signcolumn=1
-endif
-
+" VIM Settings {{{
+filetype indent plugin on
+syntax on
+colorscheme messages
+set t_Co=256
 set completeopt-=preview
 set encoding=utf-8
 set clipboard=unnamedplus
@@ -81,7 +73,9 @@ set ignorecase
 set smartcase
 set incsearch
 set nohlsearch
+" }}}
 
+" Keybindings {{{
 let g:mapleader = ","
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
@@ -90,6 +84,8 @@ nnoremap <leader>t :TagbarOpen fjc<CR>
 nnoremap <leader>ag :Ag <C-R><C-W><CR>
 vnoremap <leader>s :'<,'>sort<CR>
 vnoremap <leader>a :Tabularize /
+" }}}
 
+" Autocommands {{{
 autocmd BufWritePre * %s/\s\+$//e
-autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
+" }}}
