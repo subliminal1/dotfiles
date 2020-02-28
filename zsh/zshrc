@@ -4,7 +4,7 @@ export PATH=$HOME/.dotfiles/bin:$PATH
 if [  $(command -v ag) ]; then
     export FZF_DEFAULT_COMMAND='ag -l -g ""'
 else
-    export FZF_DEFAULT_COMMAND="find $CWD -type f | grep -v .log | grep -v node_modules | grep -v .git | grep -v vendor | sort"
+    export FZF_DEFAULT_COMMAND="find $CWD -type f | grep -v log | grep -v node_modules | grep -v .git | grep -v vendor | sort"
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
