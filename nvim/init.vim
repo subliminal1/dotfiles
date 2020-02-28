@@ -21,7 +21,7 @@ call plug#end()
 let g:tagbar_sort = 0
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_override_foldtext = 0
-let g:vim_markdown_folding_level = 2
+let g:vim_markdown_folding_level = 1
 let g:vim_markdown_no_default_key_mappings = 1
 let g:lightline = { 'colorscheme': 'Tomorrow_Night' }
 " }}}
