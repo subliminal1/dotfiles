@@ -31,7 +31,6 @@ replace ~/.zshrc $PWD/zsh/zshrc
 replace ~/.vim $PWD/nvim
 replace ~/.vimrc $PWD/nvim/init.vim
 replace ~/.tmux.conf $PWD/tmux.conf
-replace ~/.config/fish/config.fish $PWD/fish/config.fish
 
 for i in ${output[@]}; do
     printf '%s\n' "$i"
