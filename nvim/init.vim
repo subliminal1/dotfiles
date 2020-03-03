@@ -8,12 +8,17 @@ Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/godlygeek/tabular'
-Plug 'itchyny/lightline.vim'
+Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 if has('nvim')
     Plug 'https://github.com/neomake/neomake'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
+
+"Plug 'itchyny/lightline.vim'
+"let g:lightline = { 'colorscheme': 'Tomorrow_Night' }
 call plug#end()
 " }}}
 "
@@ -23,7 +28,11 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_override_foldtext = 0
 let g:vim_markdown_folding_level = 1
 let g:vim_markdown_no_default_key_mappings = 1
-let g:lightline = { 'colorscheme': 'Tomorrow_Night' }
+
+let g:airline_detect_spell=0
+let g:airline_symbols_ascii = 1
+let g:airline_theme = 'bubblegum'
+let g:airline#extensions#hunks#enabled = 0
 " }}}
 
 " Conditional Settings {{{
