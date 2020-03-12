@@ -13,7 +13,6 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 if has('nvim')
-    Plug 'https://github.com/neomake/neomake'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
@@ -37,8 +36,7 @@ let g:airline#extensions#hunks#enabled = 0
 
 " Conditional Settings {{{
 if has('nvim')
-    call neomake#configure#automake('rw')
-    set signcolumn=yes:1
+    set signcolumn=yes:2
 endif
 
 if exists('+termguicolors')
@@ -91,10 +89,14 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>t :TagbarOpen fjc<CR>
 nnoremap <leader>ag :Ag <C-R><C-W><CR>
+nnoremap <leader>g <Plug>(coc-definition)
 vnoremap <leader>s :'<,'>sort<CR>
 vnoremap <leader>a :Tabularize /
+"nmap <silent> <leader>dr <Plug>(coc-references)
+"nmap <silent> <leader>dj <Plug>(coc-implementation)
 " }}}
 
 " Autocommands {{{
 autocmd BufWritePre * %s/\s\+$//e
 " }}}
+
