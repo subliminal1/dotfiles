@@ -1,1 +1,1 @@
-setlocal formatoptions=tcnwr
+setlocal formatoptions=tcnwro
