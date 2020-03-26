@@ -89,9 +89,12 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Files %:h<CR>
 nnoremap <leader>t :TagbarOpen fjc<CR>
 nnoremap <leader>ag :Ag <C-R><C-W><CR>
-nnoremap <leader>g <Plug>(coc-definition)
 vnoremap <leader>s :'<,'>sort<CR>
 vnoremap <leader>a :Tabularize /
+
+nmap <silent> <leader>g <Plug>(coc-definition)
+nnoremap <silent> <leader>e  :<C-u>CocList diagnostics<cr>
+
 "nmap <silent> <leader>dr <Plug>(coc-references)
 "nmap <silent> <leader>dj <Plug>(coc-implementation)
 " }}}
