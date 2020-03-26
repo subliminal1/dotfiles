@@ -11,6 +11,7 @@ Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'https://github.com/ayu-theme/ayu-vim'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -36,7 +37,7 @@ let g:airline#extensions#hunks#enabled = 0
 
 " Conditional Settings {{{
 if has('nvim')
-    set signcolumn=yes:2
+    set signcolumn=yes:1
 endif
 
 if exists('+termguicolors')
@@ -47,7 +48,8 @@ endif
 " VIM Settings {{{
 filetype indent plugin on
 syntax on
-colorscheme messages
+let g:ayucolor="mirage"
+colorscheme ayu
 set t_Co=256
 set completeopt-=preview
 set encoding=utf-8
