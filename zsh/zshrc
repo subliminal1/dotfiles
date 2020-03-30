@@ -1,5 +1,11 @@
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
+setopt COMPLETE_ALIASES
+alias ls='ls --color=auto'
+
 source $HOME/.dotfiles/zsh/custom-functions.sh
-export PATH=$HOME/.dotfiles/bin:$PATH
+source $HOME/.dotfiles/zsh/prompt.sh
 
 if [  $(command -v ag) ]; then
     export FZF_DEFAULT_COMMAND='ag -l -g ""'
