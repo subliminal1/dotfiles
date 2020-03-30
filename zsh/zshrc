@@ -2,16 +2,22 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
-alias ls='ls --color=auto'
 
-source $HOME/.dotfiles/zsh/custom-functions.sh
-source $HOME/.dotfiles/zsh/prompt.sh
+load () {
+    [ -f $1 ] && source $1
+}
+
+load /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+load /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+load $HOME/.dotfiles/zsh/prompt.sh
+load $HOME/.dotfiles/zsh/custom-functions.sh
+load $HOME/.fzf.zsh
+load $HOME/.zsh-local.zsh
+
+alias ls='ls --color=auto'
 
 if [  $(command -v ag) ]; then
     export FZF_DEFAULT_COMMAND='ag -l -g ""'
 else
     export FZF_DEFAULT_COMMAND="find $CWD -type f | grep -v log | grep -v node_modules | grep -v .git | grep -v vendor | sort"
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.zsh-local.sh ] && source ~/.zsh-local.sh
