@@ -46,17 +46,6 @@ common_return_status() {
 common_git_status() {
     local message=""
     local message_color="%F{$COMMON_COLORS_GIT_STATUS_DEFAULT}"
-
-    # https://git-scm.com/docs/git-status#_short_format
-    local staged=$(git status --porcelain 2>/dev/null | grep -e "^[MADRCU]")
-    local unstaged=$(git status --porcelain 2>/dev/null | grep -e "^[MADRCU? ][MADRCU?]")
-
-    if [[ -n ${staged} ]]; then
-        message_color="%F{$COMMON_COLORS_GIT_STATUS_STAGED}"
-    elif [[ -n ${unstaged} ]]; then
-        message_color="%F{$COMMON_COLORS_GIT_STATUS_UNSTAGED}"
-    fi
-
     local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
     if [[ -n ${branch} ]]; then
         message+="${message_color}${branch}%f"
