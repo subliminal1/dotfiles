@@ -11,6 +11,7 @@ Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -42,6 +43,7 @@ endif
 
 if exists('+termguicolors')
     set termguicolors
+    let base16colorspace=256
 endif
 " }}}
 
