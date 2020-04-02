@@ -11,7 +11,6 @@ Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'https://github.com/ayu-theme/ayu-vim'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -24,6 +23,7 @@ call plug#end()
 "
 " Plug Settings {{{
 let g:tagbar_sort = 0
+let g:tagbar_left = 1
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_override_foldtext = 0
 let g:vim_markdown_folding_level = 1
@@ -48,8 +48,7 @@ endif
 " VIM Settings {{{
 filetype indent plugin on
 syntax on
-let g:ayucolor="mirage"
-colorscheme ayu
+colorscheme messages
 set t_Co=256
 set completeopt-=preview
 set encoding=utf-8
@@ -97,8 +96,18 @@ vnoremap <leader>a :Tabularize /
 nmap <silent> <leader>g <Plug>(coc-definition)
 nnoremap <silent> <leader>e  :<C-u>CocList diagnostics<cr>
 
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 "nmap <silent> <leader>dr <Plug>(coc-references)
 "nmap <silent> <leader>dj <Plug>(coc-implementation)
+
 " }}}
 
 " Autocommands {{{

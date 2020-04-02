@@ -11,15 +11,17 @@ setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
 
 load () {
-    [ -f $1 ] && source $1
+    if [ -f $1 ]; then
+        source $1
+    fi
 }
 
-load /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-load /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 load $HOME/.dotfiles/zsh/prompt.sh
 load $HOME/.dotfiles/zsh/custom-functions.sh
+load /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+load /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 load $HOME/.fzf.zsh
-load $HOME/.zsh-local.zsh
+load $HOME/.zsh-local.sh
 
 alias ls='ls --color=auto'
 
