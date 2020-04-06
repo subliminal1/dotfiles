@@ -2,17 +2,19 @@
 call plug#begin('~/.cache/vim/plugins')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/stanangeloff/php.vim'
+Plug 'https://github.com/preservim/nerdtree'
+"Plug 'https://github.com/stanangeloff/php.vim'
+Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/2072/PHP-Indenting-for-VIm'
 Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/majutsushi/tagbar'
-Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/honza/vim-snippets'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'https://github.com/ryanoasis/vim-devicons'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -23,11 +25,11 @@ call plug#end()
 "
 " Plug Settings {{{
 let g:tagbar_sort = 0
-let g:tagbar_left = 1
+let g:tagbar_left = 0
+let NERDTreeQuitOnOpen=1
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_override_foldtext = 0
 let g:vim_markdown_no_default_key_mappings = 1
-
 let g:airline_detect_spell=0
 let g:airline_symbols_ascii = 1
 let g:airline_theme = 'bubblegum'
@@ -84,13 +86,14 @@ set nohlsearch
 
 " Keybindings {{{
 let g:mapleader = ","
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>c :Files %:h<CR>
-nnoremap <leader>t :TagbarOpen fjc<CR>
-nnoremap <leader>ag :Ag <C-R><C-W><CR>
-vnoremap <leader>s :'<,'>sort<CR>
-vnoremap <leader>a :Tabularize /
+nmap <leader>f :Files<CR>
+nmap <leader>b :Buffers<CR>
+nmap <leader>c :Files %:h<CR>
+nmap <leader>t :TagbarToggle<CR>
+nmap <leader>ag :Ag <C-R><C-W><CR>
+nmap <leader>e :NERDTreeToggle<CR>
+vmap <leader>s :'<,'>sort<CR>
+
 
 
 " CoC bindings
@@ -110,4 +113,3 @@ nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 autocmd BufWritePre * %s/\s\+$//e
 au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': ''})
 " }}}
-
