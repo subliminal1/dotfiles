@@ -9,16 +9,15 @@ Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'https://github.com/honza/vim-snippets'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'chriskempson/base16-vim'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
-"Plug 'itchyny/lightline.vim'
-"let g:lightline = { 'colorscheme': 'Tomorrow_Night' }
 call plug#end()
 " }}}
 "
@@ -51,7 +50,6 @@ endif
 filetype indent plugin on
 syntax on
 colorscheme messages
-set t_Co=256
 set completeopt-=preview
 set encoding=utf-8
 set clipboard=unnamedplus
@@ -95,24 +93,22 @@ nnoremap <leader>ag :Ag <C-R><C-W><CR>
 vnoremap <leader>s :'<,'>sort<CR>
 vnoremap <leader>a :Tabularize /
 
-nmap <silent> <leader>g <Plug>(coc-definition)
-nnoremap <silent> <leader>e  :<C-u>CocList diagnostics<cr>
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
+" CoC bindings
+nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+nmap <silent> g] <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-"nmap <silent> <leader>dr <Plug>(coc-references)
-"nmap <silent> <leader>dj <Plug>(coc-implementation)
+nnoremap <silent> <space>d  :<C-u>CocList diagnostics<CR>
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 
 " }}}
 
 " Autocommands {{{
 autocmd BufWritePre * %s/\s\+$//e
+au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': ''})
 " }}}
 

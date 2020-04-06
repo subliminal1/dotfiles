@@ -30,3 +30,5 @@ if [  $(command -v ag) ]; then
 else
     export FZF_DEFAULT_COMMAND="find $CWD -type f | grep -v log | grep -v node_modules | grep -v .git | grep -v vendor | sort"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
