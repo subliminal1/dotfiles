@@ -10,11 +10,11 @@ Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/tpope/vim-fugitive'
-Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/honza/vim-snippets'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/ryanoasis/vim-devicons'
+Plug 'https://github.com/chriskempson/base16-vim'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -22,18 +22,18 @@ endif
 
 call plug#end()
 " }}}
-"
+
 " Plug Settings {{{
 let g:tagbar_sort = 0
-let g:tagbar_left = 0
+let g:tagbar_left = 1
 let NERDTreeQuitOnOpen=1
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_override_foldtext = 0
 let g:vim_markdown_no_default_key_mappings = 1
-let g:airline_detect_spell=0
+let g:airline_detect_spell = 0
 let g:airline_symbols_ascii = 1
-let g:airline_theme = 'bubblegum'
 let g:airline#extensions#hunks#enabled = 0
+let base16colorspace=256  " Access colors present in 256 colorspace
 " }}}
 
 " Conditional Settings {{{
@@ -43,14 +43,12 @@ endif
 
 if exists('+termguicolors')
     set termguicolors
-    let base16colorspace=256
 endif
 " }}}
 
 " VIM Settings {{{
 filetype indent plugin on
 syntax on
-colorscheme messages
 set completeopt-=preview
 set encoding=utf-8
 set clipboard=unnamedplus
@@ -84,6 +82,14 @@ set incsearch
 set nohlsearch
 " }}}
 
+" Coc Settings {{{
+
+set cmdheight=2 " experimental
+set updatetime=300 " experimental
+set shortmess+=c
+
+" }}}
+
 " Keybindings {{{
 let g:mapleader = ","
 nmap <leader>f :Files<CR>
@@ -93,8 +99,6 @@ nmap <leader>t :TagbarToggle<CR>
 nmap <leader>ag :Ag <C-R><C-W><CR>
 nmap <leader>e :NERDTreeToggle<CR>
 vmap <leader>s :'<,'>sort<CR>
-
-
 
 " CoC bindings
 nmap <silent> g[ <Plug>(coc-diagnostic-prev)
@@ -111,5 +115,27 @@ nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 
 " Autocommands {{{
 autocmd BufWritePre * %s/\s\+$//e
-au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': ''})
+" }}}
+
+" Theme {{{
+
+let g:airline_theme = 'bubblegum'
+set background=dark
+colorscheme messages
+
+function! LightMode()
+    set background=light
+    colorscheme base16-github
+    :AirlineTheme base16
+endfunction
+
+function! DarkMode()
+    set background=dark
+    colorscheme messages
+    :AirlineTheme bubblegum
+endfunction
+
+map <F2> :call LightMode()<CR>
+map <F3> :call DarkMode()<CR>
+
 " }}}
