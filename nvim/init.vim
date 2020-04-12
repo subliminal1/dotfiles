@@ -116,29 +116,15 @@ nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " }}}
 
 " Autocommands {{{
-autocmd BufWritePre * %s/\s\+$//e
+autocmd FileType php,javascript,typescript autocmd BufWritePre <buffer> %s/\s\+$//e
 " }}}
 
 " Theme {{{
 
-let g:light_theme = 'onehalflight'
-let g:dark_theme = 'onehalfdark'
 let g:airline_theme = 'onehalfdark'
-execute 'colorscheme ' . g:dark_theme
-
-function! LightMode()
-    set background=light
-    execute 'colorscheme ' . g:light_theme
-    :AirlineTheme onehalflight
-endfunction
-
-function! DarkMode()
-    set background=dark
-    execute 'colorscheme ' . g:dark_theme
-    :AirlineTheme onehalfdark
-endfunction
-
-map <F2> :call LightMode()<CR>
-map <F3> :call DarkMode()<CR>
-
+colorscheme onehalfdark
+highlight Comment gui=italic guifg=#7B8596
+highlight Folded guifg=#7B8596 guibg=#313640
+highlight SpellBad gui=standout
+set fillchars=fold:\ 
 " }}}
