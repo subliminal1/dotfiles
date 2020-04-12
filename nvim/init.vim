@@ -15,6 +15,8 @@ Plug 'https://github.com/honza/vim-snippets'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/chriskempson/base16-vim'
+Plug 'https://github.com/Yggdroot/indentLine'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -84,7 +86,7 @@ set nohlsearch
 
 " Coc Settings {{{
 
-set cmdheight=2 " experimental
+set cmdheight=1 " experimental
 set updatetime=300 " experimental
 set shortmess+=c
 
@@ -95,7 +97,7 @@ let g:mapleader = ","
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>c :Files %:h<CR>
-nmap <leader>t :TagbarToggle<CR>
+nmap <leader>t :TagbarOpen fjc<CR>
 nmap <leader>ag :Ag <C-R><C-W><CR>
 nmap <leader>e :NERDTreeToggle<CR>
 vmap <leader>s :'<,'>sort<CR>
@@ -119,20 +121,21 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " Theme {{{
 
-let g:airline_theme = 'bubblegum'
-set background=dark
-colorscheme messages
+let g:light_theme = 'onehalflight'
+let g:dark_theme = 'onehalfdark'
+let g:airline_theme = 'onehalfdark'
+execute 'colorscheme ' . g:dark_theme
 
 function! LightMode()
     set background=light
-    colorscheme base16-github
-    :AirlineTheme base16
+    execute 'colorscheme ' . g:light_theme
+    :AirlineTheme onehalflight
 endfunction
 
 function! DarkMode()
     set background=dark
-    colorscheme messages
-    :AirlineTheme bubblegum
+    execute 'colorscheme ' . g:dark_theme
+    :AirlineTheme onehalfdark
 endfunction
 
 map <F2> :call LightMode()<CR>
