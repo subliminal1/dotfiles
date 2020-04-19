@@ -4,6 +4,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/pangloss/vim-javascript'
+Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/vim-airline/vim-airline'
@@ -11,18 +12,16 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/chriskempson/base16-vim'
 Plug 'https://github.com/Yggdroot/indentLine'
 
-"Plug 'https://github.com/ryanoasis/vim-devicons'
-"Plug 'sonph/onehalf', {'rtp': 'vim/'}
-"Plug 'https://github.com/honza/vim-snippets'
-"Plug 'https://github.com/plasticboy/vim-markdown'
-"Plug 'https://github.com/2072/PHP-Indenting-for-VIm'
-"Plug 'https://github.com/stanangeloff/php.vim'
-"Plug 'https://github.com/preservim/nerdtree'
-
-
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
+
+"Plug 'https://github.com/ryanoasis/vim-devicons'
+"Plug 'sonph/onehalf', {'rtp': 'vim/'}
+"Plug 'https://github.com/honza/vim-snippets'
+"Plug 'https://github.com/2072/PHP-Indenting-for-VIm'
+"Plug 'https://github.com/stanangeloff/php.vim'
+"Plug 'https://github.com/preservim/nerdtree'
 
 call plug#end()
 " }}}
@@ -30,22 +29,19 @@ call plug#end()
 " Plug Settings {{{
 let g:tagbar_sort = 0
 let g:tagbar_left = 1
-let NERDTreeQuitOnOpen=1
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_override_foldtext = 0
 let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_conceal = 1
 let g:airline_detect_spell = 0
 let g:airline_symbols_ascii = 1
 let g:airline#extensions#hunks#enabled = 0
-let base16colorspace=256  " Access colors present in 256 colorspace
+"let base16colorspace=256  " Access colors present in 256 colorspace
 " }}}
 
 " Conditional Settings {{{
 if has('nvim')
     set signcolumn=yes:1
-endif
-
-if exists('+termguicolors')
     set termguicolors
 endif
 " }}}
@@ -68,7 +64,7 @@ set shiftwidth=4
 set expandtab
 set shiftround
 set textwidth=80
-set nowrap
+set wrap
 set autoindent
 set smartindent
 set copyindent
@@ -76,13 +72,15 @@ set relativenumber
 set noruler
 set wildmenu
 set laststatus=2
-set colorcolumn=80,120
 set cursorline
 set list
 set ignorecase
 set smartcase
 set incsearch
 set nohlsearch
+set foldmethod=syntax
+set foldlevelstart=0
+set foldenable
 " }}}
 
 " Coc Settings {{{
@@ -113,11 +111,22 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> <space>d  :<C-u>CocList diagnostics<CR>
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-
 " }}}
 
 " Autocommands {{{
-autocmd FileType php,javascript,typescript autocmd BufWritePre <buffer> %s/\s\+$//e
+function! StripTrailingWhitespace()
+    " Don't strip on these filetypes
+    if &ft =~ 'vim'
+        return
+    endif
+    %s/\s\+$//e
+endfunction
+
+" Strip trailing white spaces for non vim files.
+autocmd BufWritePre * call StripTrailingWhitespace()
+
+" Fix PHP auto indenting.  This does not work when in ftplugin/php.vim.
+autocmd FileType php setlocal autoindent
 " }}}
 
 " Theme {{{
@@ -127,7 +136,7 @@ highlight SignColumn guibg=bg
 highlight LineNr guibg=bg
 highlight VertSplit guifg=#747369 guibg=NONE
 highlight SpellBad gui=standout guifg=#F2777A
-highlight Comment gui=italic 
+highlight Comment gui=italic
 highlight Folded gui=italic
 set fillchars=fold:\ 
 set listchars+=eol:↵
