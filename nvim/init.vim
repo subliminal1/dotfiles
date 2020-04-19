@@ -2,21 +2,23 @@
 call plug#begin('~/.cache/vim/plugins')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/preservim/nerdtree'
-"Plug 'https://github.com/stanangeloff/php.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
-Plug 'https://github.com/2072/PHP-Indenting-for-VIm'
 Plug 'https://github.com/pangloss/vim-javascript'
-Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'https://github.com/honza/vim-snippets'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/chriskempson/base16-vim'
 Plug 'https://github.com/Yggdroot/indentLine'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
+"Plug 'https://github.com/ryanoasis/vim-devicons'
+"Plug 'sonph/onehalf', {'rtp': 'vim/'}
+"Plug 'https://github.com/honza/vim-snippets'
+"Plug 'https://github.com/plasticboy/vim-markdown'
+"Plug 'https://github.com/2072/PHP-Indenting-for-VIm'
+"Plug 'https://github.com/stanangeloff/php.vim'
+"Plug 'https://github.com/preservim/nerdtree'
+
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -77,7 +79,6 @@ set laststatus=2
 set colorcolumn=80,120
 set cursorline
 set list
-set listchars+=eol:↵
 set ignorecase
 set smartcase
 set incsearch
@@ -120,11 +121,14 @@ autocmd FileType php,javascript,typescript autocmd BufWritePre <buffer> %s/\s\+$
 " }}}
 
 " Theme {{{
-
-let g:airline_theme = 'onehalfdark'
-colorscheme onehalfdark
-highlight Comment gui=italic guifg=#7B8596
-highlight Folded guifg=#7B8596 guibg=#313640
-highlight SpellBad gui=standout
+let g:airline_theme = 'base16'
+colorscheme base16-eighties
+highlight SignColumn guibg=bg
+highlight LineNr guibg=bg
+highlight VertSplit guifg=#747369 guibg=NONE
+highlight SpellBad gui=standout guifg=#F2777A
+highlight Comment gui=italic 
+highlight Folded gui=italic
 set fillchars=fold:\ 
+set listchars+=eol:↵
 " }}}
