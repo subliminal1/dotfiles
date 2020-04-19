@@ -132,13 +132,22 @@ autocmd FileType php setlocal autoindent
 set fillchars=fold:\ 
 set listchars+=eol:↵
 
+
+function! s:base16_customize() abort
+    call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
+    call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
+    call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
+    call Base16hi("VertSplit", g:base16_gui03, g:base16_gui00, "", "", "", "")
+    call Base16hi("Comment", g:base16_gui04, g:base16_gui00, "", "", "italic", "")
+    call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
+    call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
+endfunction!
+
+augroup on_change_colorschema
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
+
 let g:airline_theme = 'base16'
 colorscheme base16-eighties
-call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
-call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
-call Base16hi("VertSplit", g:base16_gui03, g:base16_gui00, "", "", "", "")
-call Base16hi("Comment", g:base16_gui04, g:base16_gui00, "", "", "italic", "")
-call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
-call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
-
 " }}}
