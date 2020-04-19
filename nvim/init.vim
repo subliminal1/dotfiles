@@ -26,7 +26,7 @@ endif
 call plug#end()
 " }}}
 
-" Plug Settings {{{
+" Plugin Settings {{{
 let g:tagbar_sort = 0
 let g:tagbar_left = 1
 let g:vim_markdown_folding_style_pythonic = 1
@@ -36,7 +36,6 @@ let g:vim_markdown_conceal = 1
 let g:airline_detect_spell = 0
 let g:airline_symbols_ascii = 1
 let g:airline#extensions#hunks#enabled = 0
-"let base16colorspace=256  " Access colors present in 256 colorspace
 " }}}
 
 " Conditional Settings {{{
@@ -113,7 +112,7 @@ nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " }}}
 
-" Autocommands {{{
+" Auto commands {{{
 function! StripTrailingWhitespace()
     " Don't strip on these filetypes
     if &ft =~ 'vim'
@@ -130,14 +129,16 @@ autocmd FileType php setlocal autoindent
 " }}}
 
 " Theme {{{
-let g:airline_theme = 'base16'
-colorscheme base16-eighties
-highlight SignColumn guibg=bg
-highlight LineNr guibg=bg
-highlight VertSplit guifg=#747369 guibg=NONE
-highlight SpellBad gui=standout guifg=#F2777A
-highlight Comment gui=italic
-highlight Folded gui=italic
 set fillchars=fold:\ 
 set listchars+=eol:↵
+
+let g:airline_theme = 'base16'
+colorscheme base16-eighties
+call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
+call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
+call Base16hi("VertSplit", g:base16_gui03, g:base16_gui00, "", "", "", "")
+call Base16hi("Comment", g:base16_gui04, g:base16_gui00, "", "", "italic", "")
+call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
+call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
+
 " }}}
