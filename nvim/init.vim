@@ -57,29 +57,20 @@ set noswapfile
 set noshowcmd
 set noshowmode
 set spell
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set nowrap
 set expandtab
 set shiftround
-set textwidth=80
-set wrap
-set autoindent
-set smartindent
-set copyindent
 set relativenumber
 set noruler
 set wildmenu
 set laststatus=2
 set cursorline
 set list
-set ignorecase
-set smartcase
-set incsearch
-set nohlsearch
-set foldmethod=syntax
-set foldlevelstart=0
-set foldenable
+set ignorecase smartcase
+set incsearch nohlsearch
+set autoindent smartindent copyindent
+set tabstop=4 softtabstop=4 shiftwidth=4
+set foldmethod=syntax foldlevelstart=0 foldenable
 " }}}
 
 " Coc Settings {{{
@@ -129,10 +120,6 @@ autocmd FileType php setlocal autoindent
 " }}}
 
 " Theme {{{
-set fillchars=fold:\ 
-set listchars+=eol:↵
-
-
 function! s:base16_customize() abort
     call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
     call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
@@ -148,6 +135,8 @@ augroup on_change_colorschema
   autocmd ColorScheme * call s:base16_customize()
 augroup END
 
+set fillchars=fold:\ 
+set listchars+=eol:↵
 let g:airline_theme = 'base16'
 colorscheme base16-eighties
 " }}}
