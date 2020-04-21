@@ -33,6 +33,7 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_override_foldtext = 0
 let g:vim_markdown_no_default_key_mappings = 1
 let g:vim_markdown_conceal = 1
+let g:vim_markdown_conceal_code_blocks = 0
 let g:airline_detect_spell = 0
 let g:airline_symbols_ascii = 1
 let g:airline#extensions#hunks#enabled = 0
@@ -117,15 +118,18 @@ autocmd BufWritePre * call StripTrailingWhitespace()
 
 " Fix PHP auto indenting.  This does not work when in ftplugin/php.vim.
 autocmd FileType php setlocal autoindent
+
+autocmd FileType markdown setlocal formatoptions+=o
 " }}}
 
 " Theme {{{
 function! s:base16_customize() abort
     call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
+    call Base16hi("CursorLine", "", g:base16_gui01, "", "", "", "")
     call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
     call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
     call Base16hi("VertSplit", g:base16_gui03, g:base16_gui00, "", "", "", "")
-    call Base16hi("Comment", g:base16_gui04, g:base16_gui00, "", "", "italic", "")
+    call Base16hi("Comment", g:base16_gui04, "", "", "", "italic", "")
     call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
     call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
 endfunction!

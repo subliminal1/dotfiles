@@ -11,7 +11,7 @@ setlocal wrap
 setlocal colorcolumn=80,120
 setlocal foldmethod=indent
 setlocal foldlevel=1
-setlocal foldnestmax=3
+setlocal foldnestmax=2
 
 nnoremap <buffer> <silent> zM :setlocal foldlevel=1<CR>
 
