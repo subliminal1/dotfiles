@@ -16,17 +16,18 @@ if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
-"Plug 'https://github.com/ryanoasis/vim-devicons'
-"Plug 'sonph/onehalf', {'rtp': 'vim/'}
-"Plug 'https://github.com/honza/vim-snippets'
-"Plug 'https://github.com/2072/PHP-Indenting-for-VIm'
-"Plug 'https://github.com/stanangeloff/php.vim'
-"Plug 'https://github.com/preservim/nerdtree'
-
 call plug#end()
 " }}}
 
+" Conditional Settings {{{
+if has('nvim')
+    set signcolumn=yes:1
+    set termguicolors
+endif
+" }}}
+"
 " Plugin Settings {{{
+let g:fzf_preview_window = 'right:70%'
 let g:tagbar_sort = 0
 let g:tagbar_left = 1
 let g:vim_markdown_folding_style_pythonic = 1
@@ -39,11 +40,23 @@ let g:airline_symbols_ascii = 1
 let g:airline#extensions#hunks#enabled = 0
 " }}}
 
-" Conditional Settings {{{
-if has('nvim')
-    set signcolumn=yes:1
-    set termguicolors
-endif
+" CoC Settings {{{
+set cmdheight=1 " experimental
+set updatetime=300 " experimental
+set shortmess+=c
+
+" CoC bindings
+nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+nmap <silent> g] <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> <space>d  :<C-u>CocList diagnostics<CR>
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " }}}
 
 " VIM Settings {{{
@@ -74,14 +87,6 @@ set tabstop=4 softtabstop=4 shiftwidth=4
 set foldmethod=syntax foldlevelstart=0 foldenable
 " }}}
 
-" Coc Settings {{{
-
-set cmdheight=1 " experimental
-set updatetime=300 " experimental
-set shortmess+=c
-
-" }}}
-
 " Keybindings {{{
 let g:mapleader = ","
 nmap <leader>f :Files<CR>
@@ -92,16 +97,6 @@ nmap <leader>ag :Ag <C-R><C-W><CR>
 nmap <leader>e :NERDTreeToggle<CR>
 vmap <leader>s :'<,'>sort<CR>
 
-" CoC bindings
-nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-nmap <silent> g] <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> <space>d  :<C-u>CocList diagnostics<CR>
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " }}}
 
 " Auto commands {{{
