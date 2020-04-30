@@ -27,7 +27,6 @@ endif
 " }}}
 "
 " Plugin Settings {{{
-let g:fzf_preview_window = 'right:70%'
 let g:tagbar_sort = 0
 let g:tagbar_left = 1
 let g:vim_markdown_folding_style_pythonic = 1
