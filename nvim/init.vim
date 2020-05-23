@@ -11,6 +11,7 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/chriskempson/base16-vim'
 Plug 'https://github.com/Yggdroot/indentLine'
+Plug 'https://github.com/morhetz/gruvbox'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -61,7 +62,7 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " VIM Settings {{{
 filetype indent plugin on
 syntax on
-set completeopt-=preview
+"set completeopt-=preview
 set encoding=utf-8
 set clipboard=unnamedplus
 set backspace=indent,eol,start
@@ -71,11 +72,12 @@ set noshowcmd
 set noshowmode
 set spell
 set nowrap
-set expandtab
+set expandtab smarttab
 set shiftround
 set relativenumber
 set noruler
 set wildmenu
+set wildmode=longest:full,full
 set laststatus=2
 set cursorline
 set list
@@ -117,24 +119,26 @@ autocmd FileType markdown setlocal formatoptions+=o
 " }}}
 
 " Theme {{{
-function! s:base16_customize() abort
-    call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
-    call Base16hi("CursorLine", "", g:base16_gui01, "", "", "", "")
-    call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
-    call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
-    call Base16hi("VertSplit", g:base16_gui03, g:base16_gui00, "", "", "", "")
-    call Base16hi("Comment", g:base16_gui04, "", "", "", "italic", "")
-    call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
-    call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
-endfunction!
+"function! s:base16_customize() abort
+"    call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
+"    call Base16hi("CursorLine", "", g:base16_gui01, "", "", "", "")
+"    call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
+"    call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
+"    call Base16hi("VertSplit", g:base16_gui03, g:base16_gui00, "", "", "", "")
+"    call Base16hi("Comment", g:base16_gui04, "", "", "", "italic", "")
+"    call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
+"    call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
+"endfunction!
 
-augroup on_change_colorschema
-  autocmd!
-  autocmd ColorScheme * call s:base16_customize()
-augroup END
+"augroup on_change_colorschema
+"  autocmd!
+"  autocmd ColorScheme * call s:base16_customize()
+"augroup END
 
 set fillchars=fold:\ 
 set listchars+=eol:↵
-let g:airline_theme = 'base16'
-colorscheme base16-eighties
+let g:airline_theme = 'gruvbox'
+let g:gruvbox_sign_column='bg0'
+"colorscheme base16-eighties
+colorscheme gruvbox
 " }}}
