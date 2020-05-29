@@ -2,16 +2,18 @@
 call plug#begin('~/.cache/vim/plugins')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'https://github.com/majutsushi/tagbar'
+
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/plasticboy/vim-markdown'
-Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/tpope/vim-fugitive'
-Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'https://github.com/tpope/vim-commentary'
+
 Plug 'https://github.com/chriskempson/base16-vim'
-Plug 'https://github.com/Yggdroot/indentLine'
-Plug 'https://github.com/morhetz/gruvbox'
+Plug 'https://github.com/thaerkh/vim-indentguides'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -28,22 +30,25 @@ endif
 " }}}
 "
 " Plugin Settings {{{
-let g:tagbar_sort = 0
-let g:tagbar_left = 1
+let g:loaded_matchparen = 1
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_override_foldtext = 0
 let g:vim_markdown_no_default_key_mappings = 1
 let g:vim_markdown_conceal = 1
 let g:vim_markdown_conceal_code_blocks = 0
-let g:airline_detect_spell = 0
+
+let g:airline_extensions = ['coc']
+let g:airline_theme = 'base16'
 let g:airline_symbols_ascii = 1
-let g:airline#extensions#hunks#enabled = 0
+let g:airline_detect_spell = 0
+let g:airline_highlighting_cache = 1
+
 " }}}
 
 " CoC Settings {{{
-set cmdheight=1 " experimental
-set updatetime=300 " experimental
-set shortmess+=c
+set cmdheight=1     " experimental
+set updatetime=300  " experimental
+set shortmess+=c    " experimental
 
 " CoC bindings
 nmap <silent> g[ <Plug>(coc-diagnostic-prev)
@@ -93,52 +98,47 @@ let g:mapleader = ","
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>c :Files %:h<CR>
-nmap <leader>t :TagbarOpen fjc<CR>
+nmap <leader>t :TagbarOpenAutoClose<CR>
 nmap <leader>ag :Ag <C-R><C-W><CR>
-nmap <leader>e :NERDTreeToggle<CR>
 vmap <leader>s :'<,'>sort<CR>
 
 " }}}
 
 " Auto commands {{{
+
 function! StripTrailingWhitespace()
-    " Don't strip on these filetypes
+    " Don't strip on these file types.
     if &ft =~ 'vim'
         return
     endif
     %s/\s\+$//e
 endfunction
 
-" Strip trailing white spaces for non vim files.
 autocmd BufWritePre * call StripTrailingWhitespace()
-
-" Fix PHP auto indenting.  This does not work when in ftplugin/php.vim.
 autocmd FileType php setlocal autoindent
-
 autocmd FileType markdown setlocal formatoptions+=o
+
 " }}}
 
 " Theme {{{
-"function! s:base16_customize() abort
-"    call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
-"    call Base16hi("CursorLine", "", g:base16_gui01, "", "", "", "")
-"    call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
-"    call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
-"    call Base16hi("VertSplit", g:base16_gui03, g:base16_gui00, "", "", "", "")
-"    call Base16hi("Comment", g:base16_gui04, "", "", "", "italic", "")
-"    call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
-"    call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
-"endfunction!
+function! s:base16_customize() abort
+    call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
+    call Base16hi("CursorLine", "", g:base16_gui01, "", "", "", "")
+    call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
+    call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
+    call Base16hi("VertSplit", g:base16_gui03, g:base16_gui00, "", "", "", "")
+    call Base16hi("Comment", g:base16_gui04, "", "", "", "italic", "")
+    call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
+    call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
+endfunction!
 
-"augroup on_change_colorschema
-"  autocmd!
-"  autocmd ColorScheme * call s:base16_customize()
-"augroup END
+augroup on_change_colorschema
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
 
 set fillchars=fold:\ 
 set listchars+=eol:↵
-let g:airline_theme = 'gruvbox'
-let g:gruvbox_sign_column='bg0'
-"colorscheme base16-eighties
-colorscheme gruvbox
+colorscheme base16-eighties
+"colorscheme gruvbox
 " }}}
