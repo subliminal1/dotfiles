@@ -5,6 +5,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/majutsushi/tagbar'
 
 Plug 'https://github.com/sheerun/vim-polyglot'
+Plug 'https://github.com/kkoomen/vim-doge'
 Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/tpope/vim-fugitive'
