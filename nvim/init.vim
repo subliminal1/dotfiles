@@ -24,13 +24,22 @@ call plug#end()
 
 " Conditional Settings {{{
 if has('nvim')
-    set signcolumn=yes:1
+    set signcolumn=no
     set termguicolors
 endif
 " }}}
 "
 " Plugin Settings {{{
 let g:loaded_matchparen = 1
+let g:polygot_disabled = ['yaml']
+let g:tagbar_left = 1
+let g:tagbar_width = 40
+let g:tagbar_autoclose = 1
+let g:tagbar_compact = 1
+let g:tagbar_sort = 0
+let g:tagbar_show_visibility = 1
+let g:tagbar_show_linenumbers = 1
+
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_override_foldtext = 0
 let g:vim_markdown_no_default_key_mappings = 1
@@ -80,6 +89,7 @@ set nowrap
 set expandtab smarttab
 set shiftround
 set relativenumber
+set numberwidth=2
 set noruler
 set wildmenu
 set wildmode=longest:full,full
