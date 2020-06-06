@@ -131,24 +131,30 @@ autocmd FileType markdown setlocal formatoptions+=o
 " }}}
 
 " Theme {{{
+"
+set fillchars=fold:\ 
+set listchars+=eol:↵
+colorscheme base16-eighties
+
+
 function! s:base16_customize() abort
     call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
     call Base16hi("CursorLine", "", g:base16_gui01, "", "", "", "")
     call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
     call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
-    call Base16hi("VertSplit", g:base16_gui03, g:base16_gui00, "", "", "", "")
     call Base16hi("Comment", g:base16_gui04, "", "", "", "italic", "")
     call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
     call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
+    call Base16hi("VertSplit", g:base16_gui01, g:base16_gui00, "", "", "", "")
+    call Base16hi("StatusLine", g:base16_gui02, g:base16_gui02, "", "", "", "")
+    call Base16hi("StatusLineNC", "", g:base16_gui02, "", "", "", "")
 endfunction!
+
+au User AirlineAfterInit,AirlineAfterTheme call s:base16_customize()
 
 augroup on_change_colorschema
   autocmd!
   autocmd ColorScheme * call s:base16_customize()
 augroup END
 
-set fillchars=fold:\ 
-set listchars+=eol:↵
-colorscheme base16-eighties
-"colorscheme gruvbox
 " }}}
