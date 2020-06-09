@@ -10,6 +10,7 @@ Plug 'https://github.com/pangloss/vim-javascript'
 Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/tpope/vim-commentary'
+Plug 'https://github.com/godlygeek/tabular'
 
 Plug 'https://github.com/chriskempson/base16-vim'
 Plug 'https://github.com/thaerkh/vim-indentguides'
@@ -112,6 +113,7 @@ nmap <leader>c :Files %:h<CR>
 nmap <leader>t :TagbarOpenAutoClose<CR>
 nmap <leader>ag :Ag <C-R><C-W><CR>
 vmap <leader>s :'<,'>sort<CR>
+vmap <leader>a :Tab /
 
 " }}}
 
