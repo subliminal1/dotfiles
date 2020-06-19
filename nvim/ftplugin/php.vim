@@ -16,9 +16,9 @@ let php_sql_nowdoc = 0
 
 
 setlocal autoindent
-setlocal textwidth=120
+setlocal textwidth=119
 setlocal nowrap
-setlocal colorcolumn=80,120
+setlocal colorcolumn=80,119
 setlocal foldmethod=indent
 setlocal foldlevel=1
 setlocal foldnestmax=2

@@ -70,3 +70,6 @@ backend
 namespace
 parameters
 parameters
+stdClass
+BBY
+PDOStatement

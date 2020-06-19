@@ -13,9 +13,9 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/godlygeek/tabular'
 
 Plug 'https://github.com/chriskempson/base16-vim'
-Plug 'https://github.com/thaerkh/vim-indentguides'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'https://github.com/ghifarit53/tokyonight.vim'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -24,16 +24,8 @@ endif
 call plug#end()
 " }}}
 
-" Conditional Settings {{{
-if has('nvim')
-    set signcolumn=no
-    set termguicolors
-endif
-" }}}
-"
 " Plugin Settings {{{
-let g:loaded_matchparen = 1
-let g:polygot_disabled = ['yaml']
+"let g:loaded_matchparen = 0
 let g:tagbar_left = 1
 let g:tagbar_width = 40
 let g:tagbar_autoclose = 1
@@ -46,39 +38,27 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_override_foldtext = 0
 let g:vim_markdown_no_default_key_mappings = 1
 let g:vim_markdown_conceal = 1
-let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_conceal_code_blocks = 1
 
-let g:airline_extensions = ['coc']
 let g:airline_theme = 'base16'
 let g:airline_symbols_ascii = 1
 let g:airline_detect_spell = 0
 let g:airline_highlighting_cache = 1
-
+let g:airline_extensions = ['coc', 'branch', 'hunks']
 " }}}
 
-" CoC Settings {{{
-set cmdheight=1     " experimental
-set updatetime=300  " experimental
-set shortmess+=c    " experimental
-
-" CoC bindings
-nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-nmap <silent> g] <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> <space>d  :<C-u>CocList diagnostics<CR>
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Conditional Settings {{{
+if has('nvim')
+    set signcolumn=no
+    set termguicolors
+    set conceallevel=2
+endif
 " }}}
 
 " VIM Settings {{{
 filetype indent plugin on
 syntax on
-"set completeopt-=preview
+set completeopt-=longest,menuone
 set encoding=utf-8
 set clipboard=unnamedplus
 set backspace=indent,eol,start
@@ -103,12 +83,34 @@ set incsearch nohlsearch
 set autoindent smartindent copyindent
 set tabstop=4 softtabstop=4 shiftwidth=4
 set foldmethod=syntax foldlevelstart=0 foldenable
+set splitright
+set diffopt+=vertical
+" }}}
+
+" CoC Settings {{{
+set cmdheight=1     " experimental
+set updatetime=300  " experimental
+set shortmess+=c    " experimental
+
+" CoC bindings
+nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+nmap <silent> g] <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> <space>d  :<C-u>CocList diagnostics<CR>
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " }}}
 
 " Keybindings {{{
 let g:mapleader = ","
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
+nmap <leader>r :History<CR>
 nmap <leader>c :Files %:h<CR>
 nmap <leader>t :TagbarOpenAutoClose<CR>
 nmap <leader>ag :Ag <C-R><C-W><CR>
@@ -129,23 +131,22 @@ endfunction
 
 autocmd BufWritePre * call StripTrailingWhitespace()
 autocmd FileType php setlocal autoindent
-autocmd FileType markdown setlocal formatoptions+=o
+autocmd FileType markdown setlocal formatoptions=qwron
 
 " }}}
 
 " Theme {{{
-"
+
 set fillchars=fold:\ 
 set listchars+=eol:↵
 colorscheme base16-eighties
-
 
 function! s:base16_customize() abort
     call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
     call Base16hi("CursorLine", "", g:base16_gui01, "", "", "", "")
     call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
     call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
-    call Base16hi("Comment", g:base16_gui04, "", "", "", "italic", "")
+    call Base16hi("Comment", g:base16_gui04, g:base16_gui00, "", "", "italic", "")
     call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
     call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
     call Base16hi("VertSplit", g:base16_gui01, g:base16_gui00, "", "", "", "")
