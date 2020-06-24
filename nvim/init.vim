@@ -16,6 +16,7 @@ Plug 'https://github.com/chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/ghifarit53/tokyonight.vim'
+Plug 'https://github.com/joshdick/onedark.vim'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -40,7 +41,7 @@ let g:vim_markdown_no_default_key_mappings = 1
 let g:vim_markdown_conceal = 1
 let g:vim_markdown_conceal_code_blocks = 1
 
-let g:airline_theme = 'base16'
+let g:airline_theme = 'onedark'
 let g:airline_symbols_ascii = 1
 let g:airline_detect_spell = 0
 let g:airline_highlighting_cache = 1
@@ -139,26 +140,26 @@ autocmd FileType markdown setlocal formatoptions=qwron
 
 set fillchars=fold:\ 
 set listchars+=eol:↵
-colorscheme base16-eighties
+colorscheme onedark
 
-function! s:base16_customize() abort
-    call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
-    call Base16hi("CursorLine", "", g:base16_gui01, "", "", "", "")
-    call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
-    call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
-    call Base16hi("Comment", g:base16_gui04, g:base16_gui00, "", "", "italic", "")
-    call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
-    call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
-    call Base16hi("VertSplit", g:base16_gui01, g:base16_gui00, "", "", "", "")
-    call Base16hi("StatusLine", g:base16_gui02, g:base16_gui02, "", "", "", "")
-    call Base16hi("StatusLineNC", "", g:base16_gui02, "", "", "", "")
-endfunction!
-
-au User AirlineAfterInit,AirlineAfterTheme call s:base16_customize()
-
-augroup on_change_colorschema
-  autocmd!
-  autocmd ColorScheme * call s:base16_customize()
-augroup END
+"function! s:base16_customize() abort
+"    call Base16hi("LineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
+"    call Base16hi("CursorLine", "", g:base16_gui01, "", "", "", "")
+"    call Base16hi("CursorLineNr", g:base16_gui03, g:base16_gui00, "", "", "", "")
+"    call Base16hi("SignColumn", g:base16_gui03, g:base16_gui00, "", "", "", "")
+"    call Base16hi("Comment", g:base16_gui04, g:base16_gui00, "", "", "italic", "")
+"    call Base16hi("Folded", g:base16_gui03, "", "", "", "italic", "")
+"    call Base16hi("SpellBad", "", "", "", "", "undercurl", "")
+"    call Base16hi("VertSplit", g:base16_gui01, g:base16_gui00, "", "", "", "")
+"    call Base16hi("StatusLine", g:base16_gui02, g:base16_gui02, "", "", "", "")
+"    call Base16hi("StatusLineNC", "", g:base16_gui02, "", "", "", "")
+"endfunction!
+"
+"au User AirlineAfterInit,AirlineAfterTheme call s:base16_customize()
+"
+"augroup on_change_colorschema
+"  autocmd!
+"  autocmd ColorScheme * call s:base16_customize()
+"augroup END
 
 " }}}
