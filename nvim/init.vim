@@ -7,7 +7,6 @@ Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/kkoomen/vim-doge'
 Plug 'https://github.com/pangloss/vim-javascript'
-"Plug 'https://github.com/tpope/vim-markdown/'
 Plug 'https://github.com/gabrielelana/vim-markdown'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/tpope/vim-commentary'
@@ -41,17 +40,11 @@ let g:markdown_include_jekyll_support = 0
 let g:markdown_enable_mappings = 0
 let g:markdown_enable_conceal = 1
 
-"let g:vim_markdown_folding_style_pythonic = 1
-"let g:vim_markdown_override_foldtext = 0
-"let g:vim_markdown_no_default_key_mappings = 1
-"let g:vim_markdown_conceal = 1
-"let g:vim_markdown_conceal_code_blocks = 1
-
 let g:airline_theme = 'onedark'
 let g:airline_symbols_ascii = 1
 let g:airline_detect_spell = 0
 let g:airline_highlighting_cache = 1
-let g:airline_extensions = ['coc', 'branch', 'hunks']
+let g:airline_extensions = ['coc', 'branch']
 " }}}
 
 " Conditional Settings {{{
