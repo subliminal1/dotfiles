@@ -3,6 +3,7 @@ call plug#begin('~/.cache/vim/plugins')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/majutsushi/tagbar'
+Plug 'https://github.com/preservim/nerdtree'
 
 Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/pangloss/vim-javascript'
@@ -109,6 +110,7 @@ let g:mapleader = ","
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>r :History<CR>
+nmap <leader>e :NERDTreeToggle<CR>
 nmap <leader>c :Files %:h<CR>
 nmap <leader>t :TagbarOpenAutoClose<CR>
 nmap <leader>ag :Ag <C-R><C-W><CR>
