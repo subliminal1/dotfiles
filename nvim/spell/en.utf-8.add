@@ -103,3 +103,8 @@ Abbotsford
 fallback
 unshipped
 dir
+App
+src
+autowire
+autoconfigure
+yml

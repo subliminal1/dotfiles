@@ -15,6 +15,7 @@ Plug 'https://github.com/godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/gruvbox-community/gruvbox'
+Plug 'https://github.com/sainnhe/gruvbox-material'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -142,7 +143,8 @@ set background=dark
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_contrast_light='medium'
-let g:airline_theme = 'gruvbox'
-color gruvbox
+let g:gruvbox_material_background='hard'
+let g:airline_theme = 'gruvbox_material'
+color gruvbox-material
 
 " }}}
