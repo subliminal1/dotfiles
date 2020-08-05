@@ -13,7 +13,6 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/godlygeek/tabular'
 
 Plug 'vim-airline/vim-airline'
-Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'https://github.com/gruvbox-community/gruvbox'
 Plug 'https://github.com/sainnhe/gruvbox-material'
 
@@ -113,7 +112,7 @@ nmap <leader>b :Buffers<CR>
 nmap <leader>r :History<CR>
 nmap <leader>e :NERDTreeToggle<CR>
 nmap <leader>c :Files %:h<CR>
-nmap <leader>t :TagbarOpenAutoClose<CR>
+nmap <leader>t :BTags<CR>
 nmap <leader>ag :Ag <C-R><C-W><CR>
 vmap <leader>s :'<,'>sort<CR>
 vmap <leader>a :Tab /
