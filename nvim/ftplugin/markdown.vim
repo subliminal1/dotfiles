@@ -1,6 +1,4 @@
-setlocal tabstop=2 softtabstop=2 shiftwidth=2
-setlocal foldlevel=0
-setlocal textwidth=84
-setlocal colorcolumn=85
-setlocal wrap
-setlocal autoindent
+setlocal foldlevel=2 foldlevelstart=2
+setlocal textwidth=100
+setlocal colorcolumn=102
+setlocal autoindent 

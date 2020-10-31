@@ -1,14 +1,12 @@
-autoload -Uz compinit
+autoload -U compinit
 compinit
-zstyle ':completion:*' menu select
-setopt COMPLETE_ALIASES
-
+autoload -U select-word-style
+select-word-style bash
+setopt appendhistory     #Append history to the history file (no overwriting)
+setopt incappendhistory  #Immediately append to the history file, not just when a term is killed
 HISTSIZE=5000               #How many lines of history to keep in memory
 HISTFILE=~/.zsh_history     #Where to save history to disk
 SAVEHIST=5000               #Number of history entries to save to disk
-setopt    appendhistory     #Append history to the history file (no overwriting)
-setopt    sharehistory      #Share history across terminals
-setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
 
 load () {
     if [ -f $1 ]; then
@@ -17,18 +15,12 @@ load () {
 }
 
 load $HOME/.dotfiles/zsh/prompt.sh
-load $HOME/.dotfiles/zsh/custom-functions.sh
 load /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 load /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-load $HOME/.fzf.zsh
 load $HOME/.zsh-local.sh
 
+export PATH=~/.bin:$PATH
 alias ls='ls --color=auto'
 
-if [  $(command -v ag) ]; then
-    export FZF_DEFAULT_COMMAND='ag -l -g ""'
-else
-    export FZF_DEFAULT_COMMAND="find $CWD -type f | grep -v log | grep -v node_modules | grep -v .git | grep -v vendor | sort"
-fi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

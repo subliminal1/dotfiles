@@ -1,125 +1,130 @@
+" vim: foldmethod=marker
+
+" VIM Settings {{{
+
+if has('autocmd') 
+    filetype indent plugin on
+    syntax reset
+    syntax enable
+end
+
+if has('nvim')
+    set signcolumn=number " Put special symbols INTO the ruler.
+    set termguicolors     " Use better colors.
+    set conceallevel=0    " Dont' hide characters.
+endif
+
+set encoding=utf-8                                 " Set encoding.
+set nobackup nowritebackup                         " Don't write backup files.
+set noswapfile                                     " Don't keep swapfiles around.
+set hidden                                         " Keep buffers open in the background.
+set backspace=indent,eol,start                     " Fix backspace.
+set noshowcmd                                      " Don't show commands in the status line.
+set number numberwidth=2 relativenumber            " Show line numbers.
+set nospell                                        " Disable spell checking, I wish I could get this to work better.
+set equalalways splitright splitbelow              " Split configuration.
+set expandtab tabstop=4 softtabstop=4 shiftwidth=4 " Tab configuration>
+set wildmenu wildmode=longest:full,full            " Completion.
+set nowrap                                         " Don't wrap text.
+set cursorline                                     " Highlight current line.
+set autoindent smartindent copyindent              " Auto indenting>
+set laststatus=2                                   " Always show the status line.
+set foldenable foldmethod=indent                   " Folding.
+set foldlevel=0 foldlevelstart=0                   " Folding 2.
+set incsearch                                      " Show matches while typing.
+set lazyredraw                                     " Do not redraw the screen while executing macros.
+set clipboard+=unnamedplus                         " Use the system clipboard.
+set list listchars+=eol:↵                          " Show special characters on the screen.
+set updatetime=300                                 " Lower timeouts.
+set shortmess+=c                                   " Better completion messages.
+set fillchars=fold:\ ,stl:\                        " Don't fill folds with periods.
+set noruler                                        " Hide columns & rows in the status line.
+
+" Testing disabled
+" set shiftround 
+" set ignorecase smartcase
+" set completeopt-=longest,menuone
+
+" }}}
+
 " Plugins {{{
+
 call plug#begin('~/.cache/vim/plugins')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/majutsushi/tagbar'
-Plug 'https://github.com/preservim/nerdtree'
-
-Plug 'https://github.com/sheerun/vim-polyglot'
-Plug 'https://github.com/pangloss/vim-javascript'
-Plug 'https://github.com/gabrielelana/vim-markdown'
-Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/godlygeek/tabular'
-
-Plug 'vim-airline/vim-airline'
-Plug 'https://github.com/gruvbox-community/gruvbox'
+Plug 'https://github.com/gabrielelana/vim-markdown'
+"Plug 'https://github.com/StanAngeloff/php.vim'
+"Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/sainnhe/gruvbox-material'
+"Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'https://github.com/junegunn/goyo.vim'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'https://github.com/kkoomen/vim-doge'
+    Plug 'https://github.com/antoinemadec/coc-fzf'
 endif
-
 call plug#end()
-" }}}
 
-" Plugin Settings {{{
-"let g:loaded_matchparen = 0
-let g:tagbar_left = 1
-let g:tagbar_width = 40
-let g:tagbar_autoclose = 1
-let g:tagbar_compact = 1
-let g:tagbar_sort = 0
-let g:tagbar_show_visibility = 1
-let g:tagbar_show_linenumbers = 1
-
+let loaded_matchparen = 1
+let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.8 } }
+let g:fzf_preview_window = ''
+let $FZF_DEFAULT_OPTS = '--reverse'
+let $FZF_DEFAULT_COMMAND = 'ag -l --ignore node_modules -g ""'
 let g:markdown_enable_folding = 1
 let g:markdown_include_jekyll_support = 0
 let g:markdown_enable_mappings = 0
-let g:markdown_enable_conceal = 1
+let g:markdown_enable_conceal = 0
+let g:goyo_width = 120
+let g:goyo_height = '90%'
 
-let g:airline_symbols_ascii = 1
-let g:airline_detect_spell = 0
-let g:airline_highlighting_cache = 1
-let g:airline_extensions = ['coc', 'branch']
 " }}}
 
-" Conditional Settings {{{
-if has('nvim')
-    set signcolumn=no
-    set termguicolors
-    set conceallevel=2
-endif
-" }}}
+" LUA {{{
 
-" VIM Settings {{{
-filetype indent plugin on
-syntax on
-set completeopt-=longest,menuone
-set encoding=utf-8
-set clipboard=unnamedplus
-set backspace=indent,eol,start
-set hidden
-set noswapfile
-set noshowcmd
-set noshowmode
-set spell
-set nowrap
-set expandtab smarttab
-set shiftround
-set relativenumber
-set number
-set numberwidth=2
-set noruler
-set wildmenu
-set wildmode=longest:full,full
-set laststatus=2
-set cursorline
-set list
-set ignorecase smartcase
-set incsearch nohlsearch
-set autoindent smartindent copyindent
-set tabstop=4 softtabstop=4 shiftwidth=4
-set foldmethod=syntax foldlevelstart=0 foldenable
-set splitright
-set diffopt+=vertical
+"lua<<EOS
+"require'nvim-treesitter.configs'.setup {
+"  ensure_installed = "all",     -- one of "all", "language", or a list of languages
+"  highlight = {
+"    enable = true,              -- false will disable the whole extension
+"    disable = {},  -- list of language that will be disabled
+"  },
+"}
+"EOS
+
 " }}}
 
 " CoC Settings {{{
-set cmdheight=1     " experimental
-set updatetime=300  " experimental
-set shortmess+=c    " experimental
 
-" CoC bindings
+let g:coc_fzf_preview = ""
+let g:coc_fzf_opts = []
+"nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
+
+" }}}
+
+" Keybindings {{{
+
+let g:mapleader = "\<Space>"
+nmap <leader>f :Files<CR>
+nmap <leader>c :Files %:h<CR>
+nmap <leader>g :GFiles<CR>
+nmap <leader>b :Buffers<CR>
+nmap <leader>h :History<CR>
+vmap <leader>a :Tab /
+nmap <leader>e :<C-u>CocFzfList diagnostics --current-buf<CR>
+nmap <leader>o :<C-u>CocFzfList outline<CR>
 nmap <silent> g[ <Plug>(coc-diagnostic-prev)
 nmap <silent> g] <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> <space>d  :<C-u>CocList diagnostics<CR>
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" }}}
-
-" Keybindings {{{
-let g:mapleader = ","
-nmap <leader>f :Files<CR>
-nmap <leader>b :Buffers<CR>
-nmap <leader>r :History<CR>
-nmap <leader>e :NERDTreeToggle<CR>
-nmap <leader>c :Files %:h<CR>
-nmap <leader>t :BTags<CR>
-nmap <leader>ag :Ag <C-R><C-W><CR>
-vmap <leader>s :'<,'>sort<CR>
-vmap <leader>a :Tab /
+"inoremap <silent><expr> <C-k> coc#refresh()
 
 " }}}
 
-" Auto commands {{{
+" Auto Commands {{{
 
 function! StripTrailingWhitespace()
     " Don't strip on these file types.
@@ -130,20 +135,16 @@ function! StripTrailingWhitespace()
 endfunction
 
 autocmd BufWritePre * call StripTrailingWhitespace()
-autocmd FileType php setlocal autoindent
+autocmd FileType php setlocal autoindent " PHP syntax files are broken
 
 " }}}
 
 " Theme {{{
 
-set fillchars=fold:\ 
-set listchars+=eol:↵
 set background=dark
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark='medium'
-let g:gruvbox_contrast_light='medium'
 let g:gruvbox_material_background='hard'
-let g:airline_theme = 'gruvbox_material'
+let g:gruvbox_material_enable_italic=0
+let g:gruvbox_material_enable_bold=0
 color gruvbox-material
 
 " }}}
