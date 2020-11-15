@@ -57,5 +57,5 @@ common_bg_jobs() {
   echo -n $bg_status
 }
 
-PROMPT="[%n@%m:%~]%# "
+PROMPT="[%n@%m:%~]$ "
 #PROMPT="$(common_host)[%n@%M]%c$(common_bg_jobs)$(common_return_status)"

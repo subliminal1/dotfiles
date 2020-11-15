@@ -4,14 +4,13 @@
 
 if has('autocmd') 
     filetype indent plugin on
-    syntax reset
     syntax enable
 end
 
 if has('nvim')
     set signcolumn=number " Put special symbols INTO the ruler.
     set termguicolors     " Use better colors.
-    set conceallevel=0    " Dont' hide characters.
+    set conceallevel=2
 endif
 
 set encoding=utf-8                                 " Set encoding.
@@ -32,18 +31,14 @@ set laststatus=2                                   " Always show the status line
 set foldenable foldmethod=indent                   " Folding.
 set foldlevel=0 foldlevelstart=0                   " Folding 2.
 set incsearch                                      " Show matches while typing.
-set lazyredraw                                     " Do not redraw the screen while executing macros.
 set clipboard+=unnamedplus                         " Use the system clipboard.
 set list listchars+=eol:↵                          " Show special characters on the screen.
 set updatetime=300                                 " Lower timeouts.
 set shortmess+=c                                   " Better completion messages.
 set fillchars=fold:\ ,stl:\                        " Don't fill folds with periods.
 set noruler                                        " Hide columns & rows in the status line.
-
-" Testing disabled
-" set shiftround 
-" set ignorecase smartcase
-" set completeopt-=longest,menuone
+set ignorecase                                     " Easier searching
+set nohlsearch                                     " Do not highlight searches
 
 " }}}
 
@@ -54,12 +49,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/godlygeek/tabular'
-Plug 'https://github.com/gabrielelana/vim-markdown'
-"Plug 'https://github.com/StanAngeloff/php.vim'
-"Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/sainnhe/gruvbox-material'
-"Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'https://github.com/junegunn/goyo.vim'
+"Plug 'https://github.com/nelsyeung/twig.vim'
+Plug 'https://github.com/sainnhe/edge'
+Plug 'https://github.com/sainnhe/sonokai'
+Plug 'https://github.com/sheerun/vim-polyglot'
 
 if has('nvim')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -70,28 +64,10 @@ call plug#end()
 let loaded_matchparen = 1
 let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.8 } }
 let g:fzf_preview_window = ''
+let g:markdown_folding = 1
+let g:markdown_syntax_conceal = 1
 let $FZF_DEFAULT_OPTS = '--reverse'
 let $FZF_DEFAULT_COMMAND = 'ag -l --ignore node_modules -g ""'
-let g:markdown_enable_folding = 1
-let g:markdown_include_jekyll_support = 0
-let g:markdown_enable_mappings = 0
-let g:markdown_enable_conceal = 0
-let g:goyo_width = 120
-let g:goyo_height = '90%'
-
-" }}}
-
-" LUA {{{
-
-"lua<<EOS
-"require'nvim-treesitter.configs'.setup {
-"  ensure_installed = "all",     -- one of "all", "language", or a list of languages
-"  highlight = {
-"    enable = true,              -- false will disable the whole extension
-"    disable = {},  -- list of language that will be disabled
-"  },
-"}
-"EOS
 
 " }}}
 
@@ -141,10 +117,10 @@ autocmd FileType php setlocal autoindent " PHP syntax files are broken
 
 " Theme {{{
 
+let g:gruvbox_material_background = 'hard'
+let g:sonokai_style = 'shusia'
 set background=dark
-let g:gruvbox_material_background='hard'
-let g:gruvbox_material_enable_italic=0
-let g:gruvbox_material_enable_bold=0
-color gruvbox-material
+"colorscheme gruvbox-material
+colorscheme sonokai
 
 " }}}

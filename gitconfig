@@ -10,3 +10,5 @@
 	editor = vim
 [config]
 	editor = vim
+[pull]
+	rebase = false
