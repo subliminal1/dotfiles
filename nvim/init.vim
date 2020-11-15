@@ -8,9 +8,12 @@ if has('autocmd')
 end
 
 if has('nvim')
-    set signcolumn=number " Put special symbols INTO the ruler.
     set termguicolors     " Use better colors.
     set conceallevel=2
+
+    if has('signcolumn')
+        set signcolumn=number " Put special symbols INTO the ruler.
+    endif
 endif
 
 set encoding=utf-8                                 " Set encoding.
