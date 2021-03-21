@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/srv/dev/http/welf/var/cache/dev/pools/58jsrTRXxC'
+let g:netrw_dirhist_2='/home/mmyers/.bin'
+let g:netrw_dirhist_1='/srv/dev/http/sua/src/Welf/App'
+let g:netrw_dirhist_0='/srv/dev/http/sua/src/Welf'
+let g:netrw_dirhist_9='/srv/personal/http/sua/.git'
+let g:netrw_dirhist_8='/srv/personal/http/play/sua/src/Sale/Domain/Coupon'
+let g:netrw_dirhist_7='/srv/personal/http/play/sua/src/Sale'
+let g:netrw_dirhist_6='/srv/personal/http/play/sua/src/Sale/Domain'
+let g:netrw_dirhist_5='/srv/personal/http/play/sua/src/Sale'
+let g:netrw_dirhist_4='/srv/personal/http/play/sua/src/Sale/Domain'

@@ -7,8 +7,8 @@
 [push]
 	default = matching
 [core]
-	editor = vim
+	editor = nvim
 [config]
-	editor = vim
+	editor = nvim
 [pull]
 	rebase = false

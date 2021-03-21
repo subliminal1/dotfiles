@@ -23,4 +23,3 @@ export PATH=~/.bin:$PATH
 alias ls='ls --color=auto'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
