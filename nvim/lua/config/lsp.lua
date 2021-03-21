@@ -1,7 +1,13 @@
 local lsp = require('lspconfig')
 
+local opts = {}
+local key = os.getenv("INTELEPHENSE_KEY")
+if key ~= nil then
+  opts.licenceKey = key
+end
+
 lsp.intelephense.setup({
-  init_options = { licenceKey = "00R7CVDYEXOB400" },
+  init_options = opts
 })
 
 lsp.tsserver.setup({})

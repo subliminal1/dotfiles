@@ -6,4 +6,5 @@ require 'config.completion'
 require 'config.lsp'
 require 'config.tabular'
 require 'config.statusline'
+
 vim.cmd('colorscheme edge')
